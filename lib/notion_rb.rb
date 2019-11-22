@@ -1,4 +1,6 @@
-require "notion_rb/version"
+# frozen_string_literal: true
+
+require 'notion_rb/version'
 
 module NotionRb
   class Error < StandardError; end
