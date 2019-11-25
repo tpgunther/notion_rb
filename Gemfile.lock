@@ -2,13 +2,39 @@ PATH
   remote: .
   specs:
     notion_rb (0.1.0)
+      mechanize
 
 GEM
   remote: https://rubygems.org/
   specs:
     ast (2.4.0)
+    byebug (11.0.1)
+    connection_pool (2.2.2)
     diff-lcs (1.3)
+    domain_name (0.5.20190701)
+      unf (>= 0.0.5, < 1.0.0)
+    http-cookie (1.0.3)
+      domain_name (~> 0.5)
     jaro_winkler (1.5.4)
+    mechanize (2.7.6)
+      domain_name (~> 0.5, >= 0.5.1)
+      http-cookie (~> 1.0)
+      mime-types (>= 1.17.2)
+      net-http-digest_auth (~> 1.1, >= 1.1.1)
+      net-http-persistent (>= 2.5.2)
+      nokogiri (~> 1.6)
+      ntlm-http (~> 0.1, >= 0.1.1)
+      webrobots (>= 0.0.9, < 0.2)
+    mime-types (3.3)
+      mime-types-data (~> 3.2015)
+    mime-types-data (3.2019.1009)
+    mini_portile2 (2.4.0)
+    net-http-digest_auth (1.4.1)
+    net-http-persistent (3.1.0)
+      connection_pool (~> 2.2)
+    nokogiri (1.10.5)
+      mini_portile2 (~> 2.4.0)
+    ntlm-http (0.1.1)
     parallel (1.19.0)
     parser (2.6.5.0)
       ast (~> 2.4.0)
@@ -35,13 +61,18 @@ GEM
       ruby-progressbar (~> 1.7)
       unicode-display_width (>= 1.4.0, < 1.7)
     ruby-progressbar (1.10.1)
+    unf (0.1.4)
+      unf_ext
+    unf_ext (0.0.7.6)
     unicode-display_width (1.6.0)
+    webrobots (0.1.2)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
   bundler (~> 2.0)
+  byebug
   notion_rb!
   rake (~> 10.0)
   rspec (~> 3.0)

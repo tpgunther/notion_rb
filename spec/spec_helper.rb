@@ -2,6 +2,7 @@
 
 require 'bundler/setup'
 require 'notion_rb'
+require 'byebug'
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure
@@ -13,4 +14,8 @@ RSpec.configure do |config|
   config.expect_with :rspec do |c|
     c.syntax = :expect
   end
+end
+
+NotionRb.configure do |config|
+  config[:token_v2] = ENV['TOKEN_V2']
 end
