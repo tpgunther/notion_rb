@@ -6,7 +6,7 @@ module NotionRb
       def initialize(notion_id:)
         @blocks = []
         @notion_id = notion_id
-        @converter = NotionRb::Utils::TypeConverter.new
+        @converter = NotionRb::Utils::Converter.new
 
         super
       end

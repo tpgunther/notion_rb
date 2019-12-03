@@ -7,7 +7,7 @@ require 'notion_rb/api/base'
 require 'notion_rb/api/block'
 
 require 'notion_rb/utils/parser'
-require 'notion_rb/utils/type_converter'
+require 'notion_rb/utils/converter'
 
 module NotionRb
   def self.config
