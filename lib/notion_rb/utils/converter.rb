@@ -33,16 +33,20 @@ module NotionRb
         @position = 0
       end
 
-      def convert(value, parent_slug)
-        data = execute_parser(value, parent_slug)
+      def convert(value)
+        data = parse(value)
         @position += 1
         data
       end
 
       private
 
-      def execute_parser(value, parent_slug)
-        parser = Parsers.new(value, parent_slug, @position)
+      def parse(value)
+        unless TYPE_MAPPER.key?(value['type'])
+          raise ArgumentError, 'Invalid block type'
+        end
+
+        parser = Parser.new(value, @position)
         parser.send(TYPE_MAPPER[value['type']])
       end
     end

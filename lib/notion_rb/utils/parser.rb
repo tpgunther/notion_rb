@@ -2,10 +2,9 @@
 
 module NotionRb
   module Utils
-    class Parsers
-      def initialize(value, parent_slug, position)
+    class Parser
+      def initialize(value, position)
         @value = value
-        @parent_slug = parent_slug
         @position = position
       end
 
@@ -17,7 +16,7 @@ module NotionRb
         {
           notion_id: @value['id'],
           block_type: @value['type'],
-          parent_slug: @parent_slug,
+          parent_id: @value['parent_id'],
           position: @position
         }
       end

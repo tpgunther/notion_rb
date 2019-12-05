@@ -34,17 +34,17 @@ module NotionRb
         @data = body['recordMap']['block']
       end
 
-      def parse_body(notion_id = @notion_id, parent_slug = @parent_slug)
+      def parse_body(notion_id = @notion_id)
         return unless @data.key?(notion_id)
 
         value = @data[notion_id]['value']
-        @blocks << @converter.convert(value, parent_slug)
-        parse_children(value.dig('content') || [], notion_id)
+        @blocks << @converter.convert(value)
+        parse_children(value.dig('content') || [])
       end
 
-      def parse_children(children, parent_id)
+      def parse_children(children)
         children.each do |child_id|
-          parse_body(child_id, parent_id)
+          parse_body(child_id)
         end
       end
     end
