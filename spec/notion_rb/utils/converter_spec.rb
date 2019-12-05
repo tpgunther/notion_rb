@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+SingleCov.covered!
+
 RSpec.describe NotionRb::Utils::Converter do
   let(:value) { FactoryBot.json(:notion_value, :text) }
 

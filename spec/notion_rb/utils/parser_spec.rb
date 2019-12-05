@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+SingleCov.covered!
+
 RSpec.describe NotionRb::Utils::Parser do
   subject { NotionRb::Utils::Parser.new(value, 0) }
 

@@ -1,4 +1,6 @@
 # frozen_string_literal: true
+require 'single_cov'
+SingleCov.setup :rspec
 
 require 'bundler/setup'
 require 'notion_rb'
