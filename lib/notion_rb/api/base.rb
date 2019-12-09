@@ -14,13 +14,12 @@ module NotionRb
         @token_v2 = NotionRb.config[:token_v2]
       end
 
-      def call
-        response = agent.post(url, params.to_json, 'Content-Type' => 'application/json')
-        receive_body(JSON.parse(response.body))
-        parse_body
-      end
-
       private
+
+      def call
+        parse_response
+        convert_values
+      end
 
       def agent
         return @agent if @agent
@@ -34,6 +33,10 @@ module NotionRb
         @agent.tap { |agent| agent.cookie_jar << cookie }
       end
 
+      def response
+        @response ||= agent.post(url, params.to_json, 'Content-Type' => 'application/json')
+      end
+
       def url
         raise REDEFINE_EXCEPTION
       end
@@ -42,11 +45,11 @@ module NotionRb
         raise REDEFINE_EXCEPTION
       end
 
-      def receive_body(_response)
+      def parse_response
         raise REDEFINE_EXCEPTION
       end
 
-      def parse_body
+      def convert_values(_value)
         raise REDEFINE_EXCEPTION
       end
     end

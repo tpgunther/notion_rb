@@ -1,14 +1,22 @@
+# frozen_string_literal: true
+
 module NotionRb
   module Api
     class Block < Base
-      attr_reader :blocks
-
       def initialize(notion_id:)
         @blocks = []
+        @data = {}
         @notion_id = notion_id
         @converter = NotionRb::Utils::Converter.new
 
         super
+      end
+
+      def blocks
+        return @blocks if @blocks.any?
+
+        call
+        @blocks
       end
 
       private
@@ -28,13 +36,12 @@ module NotionRb
         }
       end
 
-      def receive_body(body)
-        space = body['recordMap']['space'].keys.first
-        @pages = body['recordMap']['space'][space]['value']['pages']
-        @data = body['recordMap']['block']
+      def parse_response
+        body = JSON.parse(response.body)
+        @data = body.dig('recordMap', 'block')
       end
 
-      def parse_body(notion_id = @notion_id)
+      def convert_values(notion_id = @notion_id)
         return unless @data.key?(notion_id)
 
         value = @data[notion_id]['value']
@@ -44,7 +51,7 @@ module NotionRb
 
       def parse_children(children)
         children.each do |child_id|
-          parse_body(child_id)
+          convert_values(child_id)
         end
       end
     end

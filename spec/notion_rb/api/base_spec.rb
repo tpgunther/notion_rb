@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-SingleCov.covered! # TODO: manually fix this
+SingleCov.covered!
 
 RSpec.describe NotionRb::Api::Base do
   context '#agent' do
@@ -13,9 +13,15 @@ RSpec.describe NotionRb::Api::Base do
     end
   end
 
+  context '#response' do
+    it 'raises expection' do
+      expect { subject.send(:response) }.to raise_error subject.class::REDEFINE_EXCEPTION
+    end
+  end
+
   context '#call' do
     it 'raises expection' do
-      expect { subject.call }.to raise_error subject.class::REDEFINE_EXCEPTION
+      expect { subject.send(:call) }.to raise_error subject.class::REDEFINE_EXCEPTION
     end
   end
 
@@ -32,15 +38,15 @@ RSpec.describe NotionRb::Api::Base do
       end
     end
 
-    context '#receive_body' do
+    context '#parse_response' do
       it 'raises expection' do
-        expect { subject.send(:receive_body, nil) }.to raise_error subject.class::REDEFINE_EXCEPTION
+        expect { subject.send(:parse_response) }.to raise_error subject.class::REDEFINE_EXCEPTION
       end
     end
 
-    context '#parse_body' do
+    context '#convert_values' do
       it 'raises expection' do
-        expect { subject.send(:parse_body) }.to raise_error subject.class::REDEFINE_EXCEPTION
+        expect { subject.send(:convert_values, nil) }.to raise_error subject.class::REDEFINE_EXCEPTION
       end
     end
   end
