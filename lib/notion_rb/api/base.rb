@@ -23,6 +23,8 @@ module NotionRb
       private
 
       def agent
+        return @agent if @agent
+
         @agent = Mechanize.new
         cookie = Mechanize::Cookie.new(domain: 'www.notion.so',
                                        name: 'token_v2',
@@ -36,17 +38,14 @@ module NotionRb
         raise REDEFINE_EXCEPTION
       end
 
-      # Configure params for the request
       def params
         raise REDEFINE_EXCEPTION
       end
 
-      # Save variables from response body
       def receive_body(_response)
         raise REDEFINE_EXCEPTION
       end
 
-      # Parse the body's variables
       def parse_body
         raise REDEFINE_EXCEPTION
       end
