@@ -3,6 +3,8 @@
 SingleCov.covered!
 
 RSpec.describe NotionRb::Api::Base do
+  let(:subject) { NotionRb::Api::Base.new(notion_id: 'test-uuid') }
+
   context '#agent' do
     it 'calls agent once' do
       expect(subject.send(:agent)).to eq subject.send(:agent)
@@ -13,15 +15,21 @@ RSpec.describe NotionRb::Api::Base do
     end
   end
 
-  context '#response' do
+  context '#success?' do
     it 'raises expection' do
-      expect { subject.send(:response) }.to raise_error subject.class::REDEFINE_EXCEPTION
+      expect { subject.success? }.to raise_error subject.class::REDEFINE_EXCEPTION
     end
   end
 
   context '#call' do
     it 'raises expection' do
-      expect { subject.send(:call) }.to raise_error subject.class::REDEFINE_EXCEPTION
+      expect { subject.call }.to raise_error subject.class::REDEFINE_EXCEPTION
+    end
+  end
+
+  context '#response' do
+    it 'raises expection' do
+      expect { subject.send(:response) }.to raise_error subject.class::REDEFINE_EXCEPTION
     end
   end
 
@@ -35,18 +43,6 @@ RSpec.describe NotionRb::Api::Base do
     context '#params' do
       it 'raises expection' do
         expect { subject.send(:params) }.to raise_error subject.class::REDEFINE_EXCEPTION
-      end
-    end
-
-    context '#parse_response' do
-      it 'raises expection' do
-        expect { subject.send(:parse_response) }.to raise_error subject.class::REDEFINE_EXCEPTION
-      end
-    end
-
-    context '#convert_values' do
-      it 'raises expection' do
-        expect { subject.send(:convert_values, nil) }.to raise_error subject.class::REDEFINE_EXCEPTION
       end
     end
   end

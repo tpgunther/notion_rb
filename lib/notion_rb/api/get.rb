@@ -2,11 +2,10 @@
 
 module NotionRb
   module Api
-    class Block < Base
-      def initialize(notion_id:)
+    class Get < Base
+      def initialize(_params)
         @blocks = []
         @data = {}
-        @notion_id = notion_id
         @converter = NotionRb::Utils::Converter.new
 
         super
@@ -17,6 +16,12 @@ module NotionRb
 
         call
         @blocks
+      end
+
+      def call
+        body = JSON.parse(response.body)
+        @data = body.dig('recordMap', 'block')
+        convert_values(@notion_id)
       end
 
       private
@@ -36,12 +41,7 @@ module NotionRb
         }
       end
 
-      def parse_response
-        body = JSON.parse(response.body)
-        @data = body.dig('recordMap', 'block')
-      end
-
-      def convert_values(notion_id = @notion_id)
+      def convert_values(notion_id)
         return unless @data.key?(notion_id)
 
         value = @data[notion_id]['value']

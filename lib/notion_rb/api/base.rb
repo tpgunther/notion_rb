@@ -10,16 +10,20 @@ module NotionRb
       S3_URL_PREFIX_ENCODED = 'https://s3.us-west-2.amazonaws.com/secure.notion-static.com/'
       REDEFINE_EXCEPTION = 'Define methods on subclass'
 
-      def initialize(_params = {})
+      def initialize(params)
+        @notion_id = params[:notion_id]
         @token_v2 = NotionRb.config[:token_v2]
       end
 
-      private
-
       def call
-        parse_response
-        convert_values
+        raise REDEFINE_EXCEPTION
       end
+
+      def success?
+        response.code == '200'
+      end
+
+      private
 
       def agent
         return @agent if @agent
@@ -42,14 +46,6 @@ module NotionRb
       end
 
       def params
-        raise REDEFINE_EXCEPTION
-      end
-
-      def parse_response
-        raise REDEFINE_EXCEPTION
-      end
-
-      def convert_values(_value)
         raise REDEFINE_EXCEPTION
       end
     end

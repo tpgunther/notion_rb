@@ -1,7 +1,9 @@
 # frozen_string_literal: true
 
+SingleCov.not_covered!
+
 RSpec.describe 'All Blocks' do
-  let(:blocks) { NotionRb::Api::Block.new(notion_id: 'f0d7f6e4-c228-4cba-b860-a6f40ed3372e').blocks }
+  let(:blocks) { NotionRb::Api::Get.new(notion_id: 'f0d7f6e4-c228-4cba-b860-a6f40ed3372e').blocks }
 
   let(:parent) { blocks[0] }
   (1..3).each do |index|

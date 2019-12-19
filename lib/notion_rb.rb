@@ -3,11 +3,15 @@ require 'mechanize'
 require 'json'
 
 require 'notion_rb/version'
+
 require 'notion_rb/api/base'
-require 'notion_rb/api/block'
+require 'notion_rb/api/get'
+require 'notion_rb/api/update'
 
 require 'notion_rb/utils/parser'
 require 'notion_rb/utils/converter'
+
+require 'notion_rb/block'
 
 module NotionRb
   def self.config
