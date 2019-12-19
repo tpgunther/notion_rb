@@ -4,7 +4,7 @@ module NotionRb
   module Api
     class Update < Base
       def initialize(params)
-        @value = params[:value]
+        @title = params[:title]
 
         super
       end
@@ -29,7 +29,7 @@ module NotionRb
               table: 'block',
               path: %w[properties title],
               command: 'set',
-              args: [[@value]]
+              args: [[@title]]
             }]
           }]
         }

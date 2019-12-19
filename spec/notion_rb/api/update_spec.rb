@@ -4,7 +4,7 @@ SingleCov.covered!
 
 RSpec.describe NotionRb::Api::Update do
   context 'with existing page' do
-    let(:subject) { NotionRb::Api::Update.new(notion_id: 'b4902cb0-62da-42cc-bb1a-1e6c57c62feb', value: 'A new title 2') }
+    let(:subject) { NotionRb::Api::Update.new(notion_id: 'b4902cb0-62da-42cc-bb1a-1e6c57c62feb', title: 'A new title 2') }
 
     context '#success?' do
       it 'is true', :vcr do
@@ -20,7 +20,7 @@ RSpec.describe NotionRb::Api::Update do
   end
 
   context 'with non-existing page' do
-    let(:subject) { NotionRb::Api::Update.new(notion_id: '404-page', value: 'A new title 2') }
+    let(:subject) { NotionRb::Api::Update.new(notion_id: '404-page', title: 'A new title 2') }
 
     context '#success?' do
       it 'is false', :vcr do
