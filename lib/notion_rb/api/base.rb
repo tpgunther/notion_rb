@@ -21,6 +21,8 @@ module NotionRb
 
       def success?
         response.code == '200'
+      rescue Mechanize::ResponseCodeError
+        false
       end
 
       private
