@@ -1,3 +1,7 @@
+## Description
+
+TODO: Add description
+
 ## Installation
 
 Add this line to your application's Gemfile:
