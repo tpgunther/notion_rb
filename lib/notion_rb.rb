@@ -11,6 +11,7 @@ require 'notion_rb/api/update'
 require 'notion_rb/utils/parser'
 require 'notion_rb/utils/converter'
 
+require 'notion_rb/uuid_validator'
 require 'notion_rb/block'
 
 module NotionRb

@@ -1,9 +1,11 @@
 module NotionRb
   class Block
+    include NotionRb::UuidValidator
+
     attr_accessor :uuid
 
-    def initialize(url_or_id)
-      @uuid = parse_uuid url_or_id
+    def initialize(url_or_uuid)
+      @uuid = parse_uuid url_or_uuid
       get_resource
     end
 
@@ -22,10 +24,6 @@ module NotionRb
     end
 
     private
-
-    def parse_uuid(_url_or_id)
-      'f0d7f6e4-c228-4cba-b860-a6f40ed3372e'
-    end
 
     def get_resource
       @blocks = NotionRb::Api::Get.new(notion_id: @uuid).blocks
