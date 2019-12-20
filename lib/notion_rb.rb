@@ -12,6 +12,7 @@ require 'notion_rb/utils/parser'
 require 'notion_rb/utils/converter'
 
 require 'notion_rb/uuid_validator'
+require 'notion_rb/block_cache'
 require 'notion_rb/block'
 
 module NotionRb

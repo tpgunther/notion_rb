@@ -5,6 +5,7 @@ module NotionRb
     attr_accessor :uuid
 
     def initialize(url_or_uuid)
+      @block_container = BlockCache.instance
       @uuid = parse_uuid url_or_uuid
       get_resource
     end
@@ -26,8 +27,11 @@ module NotionRb
     private
 
     def get_resource
-      @blocks = NotionRb::Api::Get.new(notion_id: @uuid).blocks
-      @block = @blocks.find { |b| b[:notion_id] == @uuid }
+      unless @block_container.contains?(@uuid)
+        @block_container.add_blocks(NotionRb::Api::Get.new(notion_id: @uuid).blocks)
+      end
+
+      @block = @block_container.find(@uuid)
     end
 
     def post_resource
