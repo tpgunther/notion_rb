@@ -17,4 +17,16 @@ RSpec.describe NotionRb::Block do
       expect(subject.title).to eq 'A new title'
     end
   end
+
+  context '#parent' do
+    let(:parent) { subject.parent }
+
+    it 'gets parent', :vcr do
+      expect(parent.instance_variable_get(:@uuid)).to eq subject.instance_variable_get(:@block)[:parent_id]
+    end
+
+    it 'has correct title', :vcr do
+      expect(parent.title).to eq 'Inbox'
+    end
+  end
 end

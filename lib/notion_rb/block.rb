@@ -19,6 +19,10 @@ module NotionRb
       save
     end
 
+    def parent
+      @parent ||= self.class.new(@block[:parent_id])
+    end
+
     def save
       # TODO: add validations if needed
       post_resource
