@@ -4,6 +4,9 @@ language: ruby
 cache: bundler
 rvm:
   - 2.5.1
+branches:
+  only:
+  - master
 before_install:
   - gem install bundler -v 1.17.3
   - export TOKEN_V2=TEST_TOKEN
