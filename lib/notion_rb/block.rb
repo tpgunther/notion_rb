@@ -23,6 +23,10 @@ module NotionRb
       @parent ||= self.class.new(@block[:parent_id])
     end
 
+    def children
+      @children ||= @block_container.children(@uuid).map { |child_uuid| self.class.new(child_uuid) }
+    end
+
     def save
       # TODO: add validations if needed
       post_resource

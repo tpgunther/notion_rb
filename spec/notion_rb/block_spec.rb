@@ -29,4 +29,15 @@ RSpec.describe NotionRb::Block do
       expect(parent.title).to eq 'Inbox'
     end
   end
+
+  context '#children' do
+    it 'gets children', :vcr do
+      expect(subject.children[0].parent.instance_variable_get(:@uuid)).to eq subject.instance_variable_get(:@uuid)
+    end
+
+    it 'gets children', :vcr do
+      expect(subject.children[0].title).to eq 'Header 1'
+      expect(subject.children[-3].children[0].title).to eq 'Child 1'
+    end
+  end
 end
