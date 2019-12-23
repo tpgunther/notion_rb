@@ -17,7 +17,8 @@ module NotionRb
           notion_id: @value['id'],
           block_type: @value['type'],
           parent_id: @value['parent_id'],
-          position: @position
+          position: @position,
+          children: (@value['content'] || [])
         }
       end
 

@@ -16,6 +16,10 @@ module NotionRb
       @blocks.find { |block| block[:notion_id] == notion_id }
     end
 
+    def children(notion_id)
+      find(notion_id)[:children]
+    end
+
     def clear
       @blocks = []
     end

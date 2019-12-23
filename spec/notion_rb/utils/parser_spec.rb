@@ -21,7 +21,8 @@ RSpec.describe NotionRb::Utils::Parser do
         notion_id: value['id'],
         block_type: value['type'],
         parent_id: value['parent_id'],
-        position: 0
+        position: 0,
+        children: value['content']
       )
     end
   end
@@ -35,6 +36,7 @@ RSpec.describe NotionRb::Utils::Parser do
         block_type: value['type'],
         parent_id: value['parent_id'],
         position: 0,
+        children: [],
         title: value['properties']['title'][0][0]
       )
     end
@@ -49,6 +51,7 @@ RSpec.describe NotionRb::Utils::Parser do
         block_type: value['type'],
         parent_id: value['parent_id'],
         position: 0,
+        children: [],
         title: value['properties']['title'][0][0],
         metadata: {
           checked: true
@@ -66,6 +69,7 @@ RSpec.describe NotionRb::Utils::Parser do
         block_type: value['type'],
         parent_id: value['parent_id'],
         position: 0,
+        children: [],
         title: value['properties']['title'][0][0],
         metadata: {
           language: value['properties']['language'][0][0]
@@ -83,6 +87,7 @@ RSpec.describe NotionRb::Utils::Parser do
         block_type: value['type'],
         parent_id: value['parent_id'],
         position: 0,
+        children: [],
         title: value['properties']['title'][0][0],
         metadata: {
           source: value['properties']['source'][0][0]
@@ -100,6 +105,7 @@ RSpec.describe NotionRb::Utils::Parser do
         block_type: value['type'],
         parent_id: value['parent_id'],
         position: 0,
+        children: [],
         title: value['properties']['title'][0][0],
         metadata: {
           source: value['properties']['link'][0][0]
