@@ -4,6 +4,8 @@ language: ruby
 cache: bundler
 rvm:
   - 2.5.1
-before_install: gem install bundler -v 2.0.2
+before_install:
+  - gem install bundler -v 1.17.3
+  - export TOKEN_V2=TEST_TOKEN
 script:
   - bundle exec rspec
