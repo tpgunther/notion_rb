@@ -2,7 +2,7 @@
 
 module NotionRb
   module Api
-    class Destroy < Base
+    class Restore < Base
       def initialize(params)
         @parent_id = params[:parent_id]
 
@@ -29,12 +29,12 @@ module NotionRb
               table: 'block',
               path: [],
               command: 'update',
-              args: { alive: false }
+              args: { parent_id: @parent_id, parent_table: 'block', alive: true }
             }, {
               id: @parent_id,
               table: 'block',
               path: ['content'],
-              command: 'listRemove',
+              command: 'listAfter',
               args: { id: @notion_id }
             }]
           }]

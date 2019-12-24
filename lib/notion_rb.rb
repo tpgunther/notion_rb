@@ -8,6 +8,7 @@ require 'notion_rb/api/base'
 require 'notion_rb/api/get'
 require 'notion_rb/api/update'
 require 'notion_rb/api/destroy'
+require 'notion_rb/api/restore'
 
 require 'notion_rb/utils/parser'
 require 'notion_rb/utils/converter'

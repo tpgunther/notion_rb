@@ -41,11 +41,21 @@ RSpec.describe NotionRb::Block do
     end
   end
 
-  context '#destroy' do
-    let(:subject) { NotionRb::Block.new('13f5a83a5a6f4625a87644cae16b9648') }
+  context 'create and destroy' do
+    before do
+      @subject = NotionRb::Block.new('13f5a83a5a6f4625a87644cae16b9648')
+    end
 
-    it 'is destroyed', :vcr do
-      expect(subject.destroy).to eq true
+    context '#destroy' do
+      it 'is destroyed', :vcr do
+        expect(@subject.destroy).to eq true
+      end
+    end
+
+    context '#restore' do
+      it 'is restored', :vcr do
+        expect(@subject.restore).to eq true
+      end
     end
   end
 end

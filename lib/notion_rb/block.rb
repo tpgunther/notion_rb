@@ -36,6 +36,10 @@ module NotionRb
       NotionRb::Api::Destroy.new(notion_id: @uuid, parent_id: @block[:parent_id]).success?
     end
 
+    def restore
+      NotionRb::Api::Restore.new(notion_id: @uuid, parent_id: @block[:parent_id]).success?
+    end
+
     private
 
     def get_resource
