@@ -1,0 +1,129 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://www.notion.so/api/v3/submitTransaction
+    body:
+      encoding: UTF-8
+      string: '{"requestId":"12a980c9-df34-48cc-a07c-cbe772808d6d","transactions":[{"id":"6a3bb675-2372-4933-81df-fd5f6f59cdfb","operations":[{"id":"a77e7a3a-6fda-40c0-a4a2-562990b9b272","table":"block","path":[],"command":"update","args":{"alive":false}},{"id":"f0d7f6e4-c228-4cba-b860-a6f40ed3372e","table":"block","path":["content"],"command":"listRemove","args":{"id":"a77e7a3a-6fda-40c0-a4a2-562990b9b272"}}]}]}'
+    headers:
+      Accept-Encoding:
+      - gzip,deflate,identity
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Mechanize/2.7.6 Ruby/2.5.7p206 (http://github.com/sparklemotion/mechanize/)
+      Accept-Charset:
+      - ISO-8859-1,utf-8;q=0.7,*;q=0.7
+      Accept-Language:
+      - en-us,en;q=0.5
+      Cookie:
+      - token_v2=TEST_TOKEN
+      Host:
+      - www.notion.so
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '401'
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '300'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 24 Dec 2019 14:23:14 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '2'
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=d361667a4c5da9a47b1368e896fbb4de41577197394; expires=Thu, 23-Jan-20
+        14:23:14 GMT; path=/; domain=.notion.so; HttpOnly; SameSite=Lax
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Frame-Options:
+      - SAMEORIGIN
+      Strict-Transport-Security:
+      - max-age=5184000; includeSubDomains
+      X-Download-Options:
+      - noopen
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      Referrer-Policy:
+      - same-origin
+      Content-Security-Policy:
+      - 'script-src ''self'' ''unsafe-inline'' ''unsafe-eval'' https://gist.github.com
+        https://apis.google.com https://api.amplitude.com https://widget.intercom.io
+        https://js.intercomcdn.com https://logs-01.loggly.com https://cdn.segment.com
+        https://checkout.stripe.com https://embed.typeform.com https://admin.typeform.com
+        https://platform.twitter.com https://cdn.syndication.twimg.com; connect-src
+        ''self'' https://msgstore.www.notion.so wss://msgstore.www.notion.so https://s3-us-west-2.amazonaws.com
+        https://s3.us-west-2.amazonaws.com https://notion-production-snapshots.s3.us-west-2.amazonaws.com
+        https: http: https://api.amplitude.com https://api.embed.ly https://js.intercomcdn.com
+        https://api-iam.intercom.io wss://nexus-websocket-a.intercom.io https://logs-01.loggly.com
+        https://api.segment.io https://checkout.stripe.com https://api.unsplash.com;
+        font-src ''self'' data: https://cdnjs.cloudflare.com https://js.intercomcdn.com;
+        img-src ''self'' data: blob: https: https://platform.twitter.com https://syndication.twitter.com
+        https://pbs.twimg.com https://ton.twimg.com; style-src ''self'' ''unsafe-inline''
+        https://cdnjs.cloudflare.com https://github.githubassets.com https://platform.twitter.com
+        https://ton.twimg.com; frame-src https: http:; media-src https: http:'
+      X-Content-Security-Policy:
+      - 'script-src ''self'' ''unsafe-inline'' ''unsafe-eval'' https://gist.github.com
+        https://apis.google.com https://api.amplitude.com https://widget.intercom.io
+        https://js.intercomcdn.com https://logs-01.loggly.com https://cdn.segment.com
+        https://checkout.stripe.com https://embed.typeform.com https://admin.typeform.com
+        https://platform.twitter.com https://cdn.syndication.twimg.com; connect-src
+        ''self'' https://msgstore.www.notion.so wss://msgstore.www.notion.so https://s3-us-west-2.amazonaws.com
+        https://s3.us-west-2.amazonaws.com https://notion-production-snapshots.s3.us-west-2.amazonaws.com
+        https: http: https://api.amplitude.com https://api.embed.ly https://js.intercomcdn.com
+        https://api-iam.intercom.io wss://nexus-websocket-a.intercom.io https://logs-01.loggly.com
+        https://api.segment.io https://checkout.stripe.com https://api.unsplash.com;
+        font-src ''self'' data: https://cdnjs.cloudflare.com https://js.intercomcdn.com;
+        img-src ''self'' data: blob: https: https://platform.twitter.com https://syndication.twitter.com
+        https://pbs.twimg.com https://ton.twimg.com; style-src ''self'' ''unsafe-inline''
+        https://cdnjs.cloudflare.com https://github.githubassets.com https://platform.twitter.com
+        https://ton.twimg.com; frame-src https: http:; media-src https: http:'
+      X-Webkit-Csp:
+      - 'script-src ''self'' ''unsafe-inline'' ''unsafe-eval'' https://gist.github.com
+        https://apis.google.com https://api.amplitude.com https://widget.intercom.io
+        https://js.intercomcdn.com https://logs-01.loggly.com https://cdn.segment.com
+        https://checkout.stripe.com https://embed.typeform.com https://admin.typeform.com
+        https://platform.twitter.com https://cdn.syndication.twimg.com; connect-src
+        ''self'' https://msgstore.www.notion.so wss://msgstore.www.notion.so https://s3-us-west-2.amazonaws.com
+        https://s3.us-west-2.amazonaws.com https://notion-production-snapshots.s3.us-west-2.amazonaws.com
+        https: http: https://api.amplitude.com https://api.embed.ly https://js.intercomcdn.com
+        https://api-iam.intercom.io wss://nexus-websocket-a.intercom.io https://logs-01.loggly.com
+        https://api.segment.io https://checkout.stripe.com https://api.unsplash.com;
+        font-src ''self'' data: https://cdnjs.cloudflare.com https://js.intercomcdn.com;
+        img-src ''self'' data: blob: https: https://platform.twitter.com https://syndication.twitter.com
+        https://pbs.twimg.com https://ton.twimg.com; style-src ''self'' ''unsafe-inline''
+        https://cdnjs.cloudflare.com https://github.githubassets.com https://platform.twitter.com
+        https://ton.twimg.com; frame-src https: http:; media-src https: http:'
+      X-Notion-User-Id:
+      - 28599043-f9d1-4370-883e-3c0e4756ac77
+      Etag:
+      - W/"2-vyGp6PvFo4RvsFtPoIWeCReyIC8"
+      Vary:
+      - Accept-Encoding
+      Cf-Cache-Status:
+      - DYNAMIC
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 54a33b649b3ed2ac-EZE
+    body:
+      encoding: UTF-8
+      string: "{}"
+    http_version:
+  recorded_at: Tue, 24 Dec 2019 14:23:13 GMT
+recorded_with: VCR 5.0.0
