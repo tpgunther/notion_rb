@@ -40,4 +40,12 @@ RSpec.describe NotionRb::Block do
       expect(subject.children[-3].children[0].title).to eq 'Child 1'
     end
   end
+
+  context '#destroy' do
+    let(:subject) { NotionRb::Block.new('13f5a83a5a6f4625a87644cae16b9648') }
+
+    it 'is destroyed', :vcr do
+      expect(subject.destroy).to eq true
+    end
+  end
 end

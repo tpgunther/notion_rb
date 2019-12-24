@@ -32,6 +32,10 @@ module NotionRb
       post_resource
     end
 
+    def destroy
+      NotionRb::Api::Destroy.new(notion_id: @uuid, parent_id: @block[:parent_id]).success?
+    end
+
     private
 
     def get_resource
