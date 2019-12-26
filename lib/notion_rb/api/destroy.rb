@@ -4,13 +4,9 @@ module NotionRb
   module Api
     class Destroy < Base
       def initialize(params)
-        @parent_id = params[:parent_id]
-
         super
-      end
 
-      def call
-        response
+        @parent_id = params[:parent_id]
       end
 
       private

@@ -4,13 +4,9 @@ module NotionRb
   module Api
     class Update < Base
       def initialize(params)
-        @title = params[:title]
-
         super
-      end
 
-      def call
-        response
+        @title = params[:title]
       end
 
       private

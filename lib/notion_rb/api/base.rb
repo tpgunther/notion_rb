@@ -16,7 +16,7 @@ module NotionRb
       end
 
       def call
-        raise REDEFINE_EXCEPTION
+        response
       end
 
       def success?

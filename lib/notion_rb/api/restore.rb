@@ -4,14 +4,11 @@ module NotionRb
   module Api
     class Restore < Base
       def initialize(params)
-        @parent_id = params[:parent_id]
-
         super
+
+        @parent_id = params[:parent_id]
       end
 
-      def call
-        response
-      end
 
       private
 

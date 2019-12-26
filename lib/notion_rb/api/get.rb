@@ -4,11 +4,11 @@ module NotionRb
   module Api
     class Get < Base
       def initialize(_params)
+        super
+
         @blocks = []
         @data = {}
         @converter = NotionRb::Utils::Converter.new
-
-        super
       end
 
       def blocks
