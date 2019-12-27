@@ -25,7 +25,9 @@ module NotionRb
         'code' => :code,
         'image' => :image,
         'file' => :embed,
+        'audio' => :embed,
         'drive' => :embed,
+        'embed' => :embed,
         'bookmark' => :bookmark,
         'callout' => :callout
       }.freeze
