@@ -17,15 +17,15 @@ FactoryBot.define do
     last_edited_by_table { 'notion_user' }
     last_edited_by_id { SecureRandom.uuid }
 
-    trait :divider do
-      type { 'divider' }
+    trait :table_of_contents do
+      type { 'table_of_contents' }
       properties { {} }
     end
 
     trait :page do
       type { 'page' }
       content do
-        3.times.map { json(:notion_value, :divider, parent_id: id)[:id] }
+        3.times.map { json(:notion_value, :text, parent_id: id)[:id] }
       end
     end
 
@@ -34,7 +34,7 @@ FactoryBot.define do
     end
 
     trait :todo do
-      type { 'todo' }
+      type { 'to_do' }
       properties { { title: [['Todo title']], checked: [['Yes']] } }
 
       trait :off do
@@ -48,13 +48,22 @@ FactoryBot.define do
     end
 
     trait :embed do
-      type { 'embed' }
+      type { 'image' }
       properties { { title: [['Embed title']], source: [['https://www.github.com']] } }
     end
 
     trait :bookmark do
       type { 'bookmark' }
       properties { { title: [['Bookmark title']], link: [['https://www.github.com']] } }
+    end
+
+    trait :callout do
+      type { 'callout' }
+      format { { page_icon: 'Icon' } }
+    end
+
+    trait :invalid do
+      type { :invalid }
     end
   end
 end

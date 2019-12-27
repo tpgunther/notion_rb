@@ -12,25 +12,30 @@ module NotionRb
         'copy_indicator' => :null,
         'table_of_contents' => :null,
         'factory' => :null,
-        'page' => :text,
-        'header' => :text,
-        'bulleted_list' => :text,
-        'numbered_list' => :text,
-        'toggle' => :text,
-        'sub_header' => :text,
-        'sub_sub_header' => :text,
-        'quote' => :text,
-        'text' => :text,
+        'page' => :base,
+        'header' => :base,
+        'bulleted_list' => :base,
+        'numbered_list' => :base,
+        'toggle' => :base,
+        'sub_header' => :base,
+        'sub_sub_header' => :base,
+        'quote' => :base,
+        'text' => :base,
         'to_do' => :todo,
         'code' => :code,
         'image' => :embed,
         'file' => :embed,
         'drive' => :embed,
-        'bookmark' => :bookmark
+        'bookmark' => :bookmark,
+        'callout' => :callout
       }.freeze
 
       def valid_block_type?(value)
         TYPE_MAPPER.key?(value)
+      end
+
+      def select_parser(value)
+        TYPE_MAPPER[value]
       end
     end
   end

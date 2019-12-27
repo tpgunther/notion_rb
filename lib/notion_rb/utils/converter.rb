@@ -3,8 +3,6 @@
 module NotionRb
   module Utils
     class Converter
-      include NotionRb::Utils::BlockTypes
-
       def initialize
         @position = 0
       end
@@ -18,12 +16,7 @@ module NotionRb
       private
 
       def parse(value)
-        unless valid_block_type?(value['type'])
-          raise ArgumentError, 'Invalid block type'
-        end
-
-        parser = Parser.new(value, @position)
-        parser.send(TYPE_MAPPER[value['type']])
+        Parser.new(value, @position).parse
       end
     end
   end

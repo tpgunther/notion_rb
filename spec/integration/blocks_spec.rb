@@ -17,6 +17,8 @@ RSpec.describe 'All Blocks' do
   let(:toggle_child_block) { blocks[15] }
   let(:quote_block) { blocks[15] }
   let(:divider_block) { blocks[16] }
+  let(:link_to_page_block) { blocks[17] }
+  let(:callout_block) { blocks[18] }
 
   context 'page parser' do
     it 'parses correctly', :vcr do
@@ -34,7 +36,8 @@ RSpec.describe 'All Blocks' do
           expect(header_1_block[:title]).to eq 'Header 1'
           expect(header_1_block[:block_type]).to eq 'header'
           expect(header_1_block[:parent_id]).to eq parent[:notion_id]
-          expect(header_1_block[:position]).to be > parent[:position]
+          expect(header_1_block[:metadata][:color]).to eq 'blue'
+          expect(header_1_block[:metadata][:block_color]).to eq 'white'
         end
       end
 
@@ -44,6 +47,8 @@ RSpec.describe 'All Blocks' do
           expect(header_2_block[:block_type]).to eq 'sub_header'
           expect(header_2_block[:parent_id]).to eq parent[:notion_id]
           expect(header_2_block[:position]).to be > header_1_block[:position]
+          expect(header_2_block[:metadata][:color]).to eq 'black'
+          expect(header_2_block[:metadata][:block_color]).to eq 'blue_background'
         end
       end
 
@@ -53,6 +58,8 @@ RSpec.describe 'All Blocks' do
           expect(header_3_block[:block_type]).to eq 'sub_sub_header'
           expect(header_3_block[:parent_id]).to eq parent[:notion_id]
           expect(header_3_block[:position]).to be > header_2_block[:position]
+          expect(header_3_block[:metadata][:color]).to eq 'black'
+          expect(header_3_block[:metadata][:block_color]).to eq 'white'
         end
       end
     end
@@ -63,11 +70,15 @@ RSpec.describe 'All Blocks' do
         expect(bullet_1_block[:block_type]).to eq 'bulleted_list'
         expect(bullet_1_block[:parent_id]).to eq parent[:notion_id]
         expect(bullet_1_block[:position]).to be > header_3_block[:position]
+        expect(bullet_1_block[:metadata][:color]).to eq 'blue'
+        expect(bullet_1_block[:metadata][:block_color]).to eq 'blue_background'
 
         expect(bullet_2_block[:title]).to eq 'bullet 2'
         expect(bullet_2_block[:block_type]).to eq 'bulleted_list'
         expect(bullet_2_block[:parent_id]).to eq parent[:notion_id]
         expect(bullet_2_block[:position]).to be > bullet_1_block[:position]
+        expect(bullet_2_block[:metadata][:color]).to eq 'black'
+        expect(bullet_2_block[:metadata][:block_color]).to eq 'white'
       end
     end
 
@@ -127,7 +138,7 @@ RSpec.describe 'All Blocks' do
 
     context 'quote parser' do
       it 'parses correctly', :vcr do
-        expect(quote_block[:title]).to eq "A inspiring quote"
+        expect(quote_block[:title]).to eq 'A inspiring quote'
         expect(quote_block[:block_type]).to eq 'quote'
         expect(quote_block[:parent_id]).to eq parent[:notion_id]
         expect(quote_block[:position]).to be > toggle_block[:position]
@@ -140,6 +151,26 @@ RSpec.describe 'All Blocks' do
         expect(divider_block[:block_type]).to eq 'divider'
         expect(divider_block[:parent_id]).to eq parent[:notion_id]
         expect(divider_block[:position]).to be > quote_block[:position]
+      end
+    end
+
+    context 'link_to_page_block parser' do
+      it 'parses correctly', :vcr do
+        expect(link_to_page_block[:title]).to eq 'Subchild'
+        expect(link_to_page_block[:block_type]).to eq 'page'
+        expect(link_to_page_block[:parent_id]).not_to eq parent[:notion_id]
+        expect(link_to_page_block[:position]).to be > divider_block[:position]
+      end
+    end
+
+    context 'callout_block parser' do
+      it 'parses correctly', :vcr do
+        expect(callout_block[:title]).to eq 'Callout text'
+        expect(callout_block[:block_type]).to eq 'callout'
+        expect(callout_block[:parent_id]).to eq parent[:notion_id]
+        expect(callout_block[:position]).to be > link_to_page_block[:position]
+        expect(callout_block[:metadata][:page_icon]).to eq '💡'
+        expect(callout_block[:metadata][:block_color]).to eq 'red_background'
       end
     end
   end

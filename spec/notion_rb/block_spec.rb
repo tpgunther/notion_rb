@@ -5,6 +5,10 @@ SingleCov.covered!
 RSpec.describe NotionRb::Block do
   let(:subject) { NotionRb::Block.new('https://www.notion.so/tpgunther/a-new-title-f0d7f6e4c2284cbab860a6f40ed3372e') }
 
+  after(:each) do
+    NotionRb::Utils::BlockCache.instance.clear
+  end
+
   context '#title' do
     it 'gets correct title', :vcr do
       expect(subject.title).to eq 'Testing notion gem'
@@ -19,14 +23,14 @@ RSpec.describe NotionRb::Block do
   end
 
   context '#type' do
-    it 'gets correct type' do
+    it 'gets correct type', :vcr do
       expect(subject.type).to eq 'page'
     end
   end
 
   context '#type=' do
     context 'with invalid type' do
-      it 'does not set type' do
+      it 'does not set type', :vcr do
         subject.type = 'non-type'
         expect(subject.type).to eq 'page'
       end
@@ -53,11 +57,11 @@ RSpec.describe NotionRb::Block do
   end
 
   context '#children' do
-    it 'gets children', :vcr do
+    it 'gets correct children uuid', :vcr do
       expect(subject.children[0].parent.instance_variable_get(:@uuid)).to eq subject.instance_variable_get(:@uuid)
     end
 
-    it 'gets children', :vcr do
+    it "gets children's children", :vcr do
       expect(subject.children[0].title).to eq 'Header 1'
       expect(subject.children[-3].children[0].title).to eq 'Child 1'
     end

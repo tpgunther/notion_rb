@@ -5,48 +5,67 @@ SingleCov.covered!
 RSpec.describe NotionRb::Utils::Parser do
   subject { NotionRb::Utils::Parser.new(value, 0) }
 
-  context '#null' do
-    let(:value) { FactoryBot.json(:notion_value, :divider) }
+  context 'invalid type' do
+    let(:value) { FactoryBot.json(:notion_value, :invalid) }
 
-    it 'generates correct hash' do
-      expect(subject.null).to eq({})
+    it 'raises error' do
+      expect { subject.parse }.to raise_error ArgumentError, /Invalid block type/
     end
   end
 
-  context '#base' do
-    let(:value) { FactoryBot.json(:notion_value, :page) }
+  context 'null parse' do
+    let(:value) { FactoryBot.json(:notion_value, :table_of_contents) }
 
     it 'generates correct hash' do
-      expect(subject.base).to eq(
-        notion_id: value['id'],
-        block_type: value['type'],
-        parent_id: value['parent_id'],
-        position: 0,
-        children: value['content']
-      )
+      expect(subject.parse).to eq({})
     end
   end
 
-  context '#text' do
-    let(:value) { FactoryBot.json(:notion_value, :text) }
+  context 'base parser' do
+    context 'page block' do
+      let(:value) { FactoryBot.json(:notion_value, :page) }
 
-    it 'generates correct hash' do
-      expect(subject.text).to eq(
-        notion_id: value['id'],
-        block_type: value['type'],
-        parent_id: value['parent_id'],
-        position: 0,
-        children: [],
-        title: value['properties']['title'][0][0]
-      )
+      it 'generates correct hash' do
+        expect(subject.parse).to eq(
+          notion_id: value['id'],
+          block_type: value['type'],
+          parent_id: value['parent_id'],
+          position: 0,
+          children: value['content'],
+          title: value['properties']['title'][0][0],
+          metadata: {
+            color: 'black',
+            block_color: 'white'
+          }
+        )
+      end
+    end
+
+    context 'text block' do
+      let(:value) { FactoryBot.json(:notion_value, :text) }
+
+      it 'generates correct hash' do
+        expect(subject.parse).to eq(
+          notion_id: value['id'],
+          block_type: value['type'],
+          parent_id: value['parent_id'],
+          position: 0,
+          children: [],
+          title: value['properties']['title'][0][0],
+          metadata: {
+            color: 'black',
+            block_color: 'white'
+          }
+        )
+      end
     end
   end
 
-  context '#todo' do
+  context 'todo parser' do
     let(:value) { FactoryBot.json(:notion_value, :todo) }
 
     it 'generates correct hash' do
-      expect(subject.todo).to eq(
+      expect(subject.parse).to eq(
         notion_id: value['id'],
         block_type: value['type'],
         parent_id: value['parent_id'],
@@ -54,17 +73,19 @@ RSpec.describe NotionRb::Utils::Parser do
         children: [],
         title: value['properties']['title'][0][0],
         metadata: {
+          color: 'black',
+          block_color: 'white',
           checked: true
         }
       )
     end
   end
 
-  context '#code' do
+  context 'code parser' do
     let(:value) { FactoryBot.json(:notion_value, :code) }
 
     it 'generates correct hash' do
-      expect(subject.code).to eq(
+      expect(subject.parse).to eq(
         notion_id: value['id'],
         block_type: value['type'],
         parent_id: value['parent_id'],
@@ -72,17 +93,19 @@ RSpec.describe NotionRb::Utils::Parser do
         children: [],
         title: value['properties']['title'][0][0],
         metadata: {
+          color: 'black',
+          block_color: 'white',
           language: value['properties']['language'][0][0]
         }
       )
     end
   end
 
-  context '#embed' do
+  context 'embed parser' do
     let(:value) { FactoryBot.json(:notion_value, :embed) }
 
     it 'generates correct hash' do
-      expect(subject.embed).to eq(
+      expect(subject.parse).to eq(
         notion_id: value['id'],
         block_type: value['type'],
         parent_id: value['parent_id'],
@@ -90,17 +113,19 @@ RSpec.describe NotionRb::Utils::Parser do
         children: [],
         title: value['properties']['title'][0][0],
         metadata: {
+          color: 'black',
+          block_color: 'white',
           source: value['properties']['source'][0][0]
         }
       )
     end
   end
 
-  context '#bookmark' do
+  context 'bookmark parser' do
     let(:value) { FactoryBot.json(:notion_value, :bookmark) }
 
     it 'generates correct hash' do
-      expect(subject.bookmark).to eq(
+      expect(subject.parse).to eq(
         notion_id: value['id'],
         block_type: value['type'],
         parent_id: value['parent_id'],
@@ -108,7 +133,29 @@ RSpec.describe NotionRb::Utils::Parser do
         children: [],
         title: value['properties']['title'][0][0],
         metadata: {
+          color: 'black',
+          block_color: 'white',
           source: value['properties']['link'][0][0]
+        }
+      )
+    end
+  end
+
+  context 'callout parser' do
+    let(:value) { FactoryBot.json(:notion_value, :callout) }
+
+    it 'generates correct hash' do
+      expect(subject.parse).to eq(
+        notion_id: value['id'],
+        block_type: value['type'],
+        parent_id: value['parent_id'],
+        position: 0,
+        children: [],
+        title: value['properties']['title'][0][0],
+        metadata: {
+          color: 'black',
+          block_color: 'white',
+          page_icon: value.dig('format', 'page_icon')
         }
       )
     end

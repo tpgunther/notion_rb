@@ -35,7 +35,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Mon, 16 Dec 2019 14:39:00 GMT
+      - Fri, 27 Dec 2019 17:21:16 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -43,8 +43,8 @@ http_interactions:
       Connection:
       - keep-alive
       Set-Cookie:
-      - __cfduid=db5c14f3de6329e715687ce2aa951cadb1576507140; expires=Wed, 15-Jan-20
-        14:39:00 GMT; path=/; domain=.notion.so; HttpOnly
+      - __cfduid=d1806fa7a5783ac3e9b896f0b55ef59551577467276; expires=Sun, 26-Jan-20
+        17:21:16 GMT; path=/; domain=.notion.so; HttpOnly; SameSite=Lax
       X-Dns-Prefetch-Control:
       - 'off'
       X-Frame-Options:
@@ -59,58 +59,58 @@ http_interactions:
       - 1; mode=block
       Referrer-Policy:
       - same-origin
-      Content-Security-Policy-Report-Only:
+      Content-Security-Policy:
       - 'script-src ''self'' ''unsafe-inline'' ''unsafe-eval'' https://gist.github.com
         https://apis.google.com https://api.amplitude.com https://widget.intercom.io
         https://js.intercomcdn.com https://logs-01.loggly.com https://cdn.segment.com
-        https://checkout.stripe.com https://embed.typeform.com https://platform.twitter.com
-        https://cdn.syndication.twimg.com; connect-src ''self'' https://msgstore.www.notion.so
-        wss://msgstore.www.notion.so https://s3-us-west-2.amazonaws.com https://s3.us-west-2.amazonaws.com
-        https://notion-production-snapshots.s3.us-west-2.amazonaws.com https://api.amplitude.com
-        https://api.embed.ly https://js.intercomcdn.com https://api-iam.intercom.io
-        wss://nexus-websocket-a.intercom.io https://logs-01.loggly.com https://api.segment.io
-        https://checkout.stripe.com https://api.unsplash.com; font-src ''self'' data:
-        https://cdnjs.cloudflare.com https://js.intercomcdn.com; img-src ''self''
-        data: blob: https: http: https://platform.twitter.com https://syndication.twitter.com
+        https://checkout.stripe.com https://embed.typeform.com https://admin.typeform.com
+        https://platform.twitter.com https://cdn.syndication.twimg.com; connect-src
+        ''self'' https://msgstore.www.notion.so wss://msgstore.www.notion.so https://s3-us-west-2.amazonaws.com
+        https://s3.us-west-2.amazonaws.com https://notion-production-snapshots.s3.us-west-2.amazonaws.com
+        https: http: https://api.amplitude.com https://api.embed.ly https://js.intercomcdn.com
+        https://api-iam.intercom.io wss://nexus-websocket-a.intercom.io https://logs-01.loggly.com
+        https://api.segment.io https://checkout.stripe.com https://api.unsplash.com;
+        font-src ''self'' data: https://cdnjs.cloudflare.com https://js.intercomcdn.com;
+        img-src ''self'' data: blob: https: https://platform.twitter.com https://syndication.twitter.com
         https://pbs.twimg.com https://ton.twimg.com; style-src ''self'' ''unsafe-inline''
         https://cdnjs.cloudflare.com https://github.githubassets.com https://platform.twitter.com
         https://ton.twimg.com; frame-src https: http:; media-src https: http:'
-      X-Content-Security-Policy-Report-Only:
+      X-Content-Security-Policy:
       - 'script-src ''self'' ''unsafe-inline'' ''unsafe-eval'' https://gist.github.com
         https://apis.google.com https://api.amplitude.com https://widget.intercom.io
         https://js.intercomcdn.com https://logs-01.loggly.com https://cdn.segment.com
-        https://checkout.stripe.com https://embed.typeform.com https://platform.twitter.com
-        https://cdn.syndication.twimg.com; connect-src ''self'' https://msgstore.www.notion.so
-        wss://msgstore.www.notion.so https://s3-us-west-2.amazonaws.com https://s3.us-west-2.amazonaws.com
-        https://notion-production-snapshots.s3.us-west-2.amazonaws.com https://api.amplitude.com
-        https://api.embed.ly https://js.intercomcdn.com https://api-iam.intercom.io
-        wss://nexus-websocket-a.intercom.io https://logs-01.loggly.com https://api.segment.io
-        https://checkout.stripe.com https://api.unsplash.com; font-src ''self'' data:
-        https://cdnjs.cloudflare.com https://js.intercomcdn.com; img-src ''self''
-        data: blob: https: http: https://platform.twitter.com https://syndication.twitter.com
+        https://checkout.stripe.com https://embed.typeform.com https://admin.typeform.com
+        https://platform.twitter.com https://cdn.syndication.twimg.com; connect-src
+        ''self'' https://msgstore.www.notion.so wss://msgstore.www.notion.so https://s3-us-west-2.amazonaws.com
+        https://s3.us-west-2.amazonaws.com https://notion-production-snapshots.s3.us-west-2.amazonaws.com
+        https: http: https://api.amplitude.com https://api.embed.ly https://js.intercomcdn.com
+        https://api-iam.intercom.io wss://nexus-websocket-a.intercom.io https://logs-01.loggly.com
+        https://api.segment.io https://checkout.stripe.com https://api.unsplash.com;
+        font-src ''self'' data: https://cdnjs.cloudflare.com https://js.intercomcdn.com;
+        img-src ''self'' data: blob: https: https://platform.twitter.com https://syndication.twitter.com
         https://pbs.twimg.com https://ton.twimg.com; style-src ''self'' ''unsafe-inline''
         https://cdnjs.cloudflare.com https://github.githubassets.com https://platform.twitter.com
         https://ton.twimg.com; frame-src https: http:; media-src https: http:'
-      X-Webkit-Csp-Report-Only:
+      X-Webkit-Csp:
       - 'script-src ''self'' ''unsafe-inline'' ''unsafe-eval'' https://gist.github.com
         https://apis.google.com https://api.amplitude.com https://widget.intercom.io
         https://js.intercomcdn.com https://logs-01.loggly.com https://cdn.segment.com
-        https://checkout.stripe.com https://embed.typeform.com https://platform.twitter.com
-        https://cdn.syndication.twimg.com; connect-src ''self'' https://msgstore.www.notion.so
-        wss://msgstore.www.notion.so https://s3-us-west-2.amazonaws.com https://s3.us-west-2.amazonaws.com
-        https://notion-production-snapshots.s3.us-west-2.amazonaws.com https://api.amplitude.com
-        https://api.embed.ly https://js.intercomcdn.com https://api-iam.intercom.io
-        wss://nexus-websocket-a.intercom.io https://logs-01.loggly.com https://api.segment.io
-        https://checkout.stripe.com https://api.unsplash.com; font-src ''self'' data:
-        https://cdnjs.cloudflare.com https://js.intercomcdn.com; img-src ''self''
-        data: blob: https: http: https://platform.twitter.com https://syndication.twitter.com
+        https://checkout.stripe.com https://embed.typeform.com https://admin.typeform.com
+        https://platform.twitter.com https://cdn.syndication.twimg.com; connect-src
+        ''self'' https://msgstore.www.notion.so wss://msgstore.www.notion.so https://s3-us-west-2.amazonaws.com
+        https://s3.us-west-2.amazonaws.com https://notion-production-snapshots.s3.us-west-2.amazonaws.com
+        https: http: https://api.amplitude.com https://api.embed.ly https://js.intercomcdn.com
+        https://api-iam.intercom.io wss://nexus-websocket-a.intercom.io https://logs-01.loggly.com
+        https://api.segment.io https://checkout.stripe.com https://api.unsplash.com;
+        font-src ''self'' data: https://cdnjs.cloudflare.com https://js.intercomcdn.com;
+        img-src ''self'' data: blob: https: https://platform.twitter.com https://syndication.twitter.com
         https://pbs.twimg.com https://ton.twimg.com; style-src ''self'' ''unsafe-inline''
         https://cdnjs.cloudflare.com https://github.githubassets.com https://platform.twitter.com
         https://ton.twimg.com; frame-src https: http:; media-src https: http:'
       X-Notion-User-Id:
       - 28599043-f9d1-4370-883e-3c0e4756ac77
       Etag:
-      - W/"3d16-DbRnwm7PFRFPK52bh+qnI6s84Zo"
+      - W/"4466-CbtfTEd7mBbzIV0R6tgd12hjw/8"
       Vary:
       - Accept-Encoding
       Content-Encoding:
@@ -122,11 +122,11 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 5461677a5fe6cfbf-SCL
+      - 54bcf84dc9daf7c6-EZE
     body:
       encoding: ASCII-8BIT
       string: !binary |-
-        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
+        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
     http_version:
-  recorded_at: Mon, 16 Dec 2019 14:39:00 GMT
+  recorded_at: Fri, 27 Dec 2019 17:21:16 GMT
 recorded_with: VCR 5.0.0
