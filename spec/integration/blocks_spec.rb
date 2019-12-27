@@ -21,6 +21,7 @@ RSpec.describe 'All Blocks' do
   let(:callout_block) { blocks[18] }
   let(:image_block) { blocks[19] }
   let(:bookmark_block) { blocks[20] }
+  let(:code_block) { blocks[21] }
 
   context 'page parser' do
     it 'parses correctly', :vcr do
@@ -194,6 +195,16 @@ RSpec.describe 'All Blocks' do
         expect(bookmark_block[:parent_id]).to eq parent[:notion_id]
         expect(bookmark_block[:position]).to be > image_block[:position]
         expect(bookmark_block[:metadata][:source]).to match /https/
+      end
+    end
+
+    context 'code parser' do
+      it 'parses correctly', :vcr do
+        expect(code_block[:title]).to eq "puts 'Hello World'"
+        expect(code_block[:block_type]).to eq 'code'
+        expect(code_block[:parent_id]).to eq parent[:notion_id]
+        expect(code_block[:position]).to be > bookmark_block[:position]
+        expect(code_block[:metadata][:language]).to eq 'ruby'
       end
     end
   end
