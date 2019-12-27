@@ -22,6 +22,9 @@ RSpec.describe 'All Blocks' do
   let(:image_block) { blocks[19] }
   let(:bookmark_block) { blocks[20] }
   let(:code_block) { blocks[21] }
+  let(:file_block) { blocks[22] }
+  let(:audio_block) { blocks[23] }
+  let(:embed_block) { blocks[24] }
 
   context 'page parser' do
     it 'parses correctly', :vcr do
@@ -205,6 +208,36 @@ RSpec.describe 'All Blocks' do
         expect(code_block[:parent_id]).to eq parent[:notion_id]
         expect(code_block[:position]).to be > bookmark_block[:position]
         expect(code_block[:metadata][:language]).to eq 'ruby'
+      end
+    end
+
+    context 'file parser' do
+      it 'parses correctly', :vcr do
+        expect(file_block[:title]).to eq 'test.txt'
+        expect(file_block[:block_type]).to eq 'file'
+        expect(file_block[:parent_id]).to eq parent[:notion_id]
+        expect(file_block[:position]).to be > code_block[:position]
+        expect(file_block[:metadata][:source]).to match /http/
+      end
+    end
+
+    context 'audio parser' do
+      it 'parses correctly', :vcr do
+        expect(audio_block[:title]).to eq nil
+        expect(audio_block[:block_type]).to eq 'audio'
+        expect(audio_block[:parent_id]).to eq parent[:notion_id]
+        expect(audio_block[:position]).to be > file_block[:position]
+        expect(audio_block[:metadata][:source]).to match /http/
+      end
+    end
+
+    context 'embed parser' do
+      it 'parses correctly', :vcr do
+        expect(embed_block[:title]).to eq nil
+        expect(embed_block[:block_type]).to eq 'embed'
+        expect(embed_block[:parent_id]).to eq parent[:notion_id]
+        expect(embed_block[:position]).to be > audio_block[:position]
+        expect(audio_block[:metadata][:source]).to match /http/
       end
     end
   end
