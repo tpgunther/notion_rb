@@ -8,7 +8,6 @@ module NotionRb
 
         @blocks = []
         @data = {}
-        @converter = NotionRb::Utils::Converter.new
       end
 
       def blocks

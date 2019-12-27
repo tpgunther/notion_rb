@@ -1,12 +1,12 @@
 # frozen_string_literal: false
 
 class DummyClass
-  include NotionRb::UuidValidator
+  include NotionRb::Utils::UuidValidator
 end
 
 SingleCov.covered!
 
-RSpec.describe NotionRb::UuidValidator, type: :module do
+RSpec.describe NotionRb::Utils::UuidValidator, type: :module do
   let(:subject) { DummyClass.new }
 
   context '#parse_from_hex' do

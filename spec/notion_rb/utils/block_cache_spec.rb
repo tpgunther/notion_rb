@@ -2,12 +2,12 @@
 
 SingleCov.covered!
 
-RSpec.describe NotionRb::BlockCache do
-  let(:subject) { NotionRb::BlockCache.instance }
+RSpec.describe NotionRb::Utils::BlockCache do
+  let(:subject) { NotionRb::Utils::BlockCache.instance }
   let!(:block) { FactoryBot.json(:block, :text) }
 
   it 'is singleton' do
-    expect(subject).to eq NotionRb::BlockCache.instance
+    expect(subject).to eq NotionRb::Utils::BlockCache.instance
   end
 
   context 'with blocks' do

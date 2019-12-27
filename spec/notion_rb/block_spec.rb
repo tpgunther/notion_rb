@@ -18,6 +18,28 @@ RSpec.describe NotionRb::Block do
     end
   end
 
+  context '#type' do
+    it 'gets correct type' do
+      expect(subject.type).to eq 'page'
+    end
+  end
+
+  context '#type=' do
+    context 'with invalid type' do
+      it 'does not set type' do
+        subject.type = 'non-type'
+        expect(subject.type).to eq 'page'
+      end
+    end
+
+    context 'with valid type' do
+      it 'sets correct type', :vcr do
+        subject.type = 'toggle'
+        expect(subject.type).to eq 'toggle'
+      end
+    end
+  end
+
   context '#parent' do
     let(:parent) { subject.parent }
 

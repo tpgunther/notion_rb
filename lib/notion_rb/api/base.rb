@@ -13,6 +13,7 @@ module NotionRb
       def initialize(params)
         @notion_id = params[:notion_id]
         @token_v2 = NotionRb.config[:token_v2]
+        @converter = NotionRb::Utils::Converter.new
       end
 
       def call

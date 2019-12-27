@@ -4,7 +4,7 @@ SingleCov.covered!
 
 RSpec.describe NotionRb::Api::Update do
   context 'with existing page' do
-    let(:subject) { NotionRb::Api::Update.new(notion_id: 'b4902cb0-62da-42cc-bb1a-1e6c57c62feb', title: 'A new title 2') }
+    let(:subject) { NotionRb::Api::Update.new(notion_id: 'b4902cb0-62da-42cc-bb1a-1e6c57c62feb', title: 'A new title 2', block_type: 'toggle') }
 
     context '#success?' do
       it 'is true', :vcr do

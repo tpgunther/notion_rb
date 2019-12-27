@@ -5,8 +5,8 @@ http_interactions:
     uri: https://www.notion.so/api/v3/submitTransaction
     body:
       encoding: UTF-8
-      string: '{"requestId":"30308f19-ab29-4f54-a326-fe2cad7c3087","transactions":[{"id":"8018ff07-c6c2-42f4-a017-0a5f80650777","operations":[{"id":"b4902cb0-62da-42cc-bb1a-1e6c57c62feb","table":"block","path":["properties","title"],"command":"set","args":[["A
-        new title 2"]]}]},{"id":"1da11563-04d0-4401-a16f-c035f66f93c8","operations":[{"id":"b4902cb0-62da-42cc-bb1a-1e6c57c62feb","table":"block","path":[],"command":"update","args":{"type":"toggle"}}]}]}'
+      string: '{"requestId":"8e1b62e1-0717-4b4e-a8be-fea073a45bd3","transactions":[{"id":"c7236e89-9027-4cc4-b0f1-83dda3515147","operations":[{"id":"f0d7f6e4-c228-4cba-b860-a6f40ed3372e","table":"block","path":["properties","title"],"command":"set","args":[["A
+        new title"]]}]},{"id":"d392fffb-88f3-486f-a718-15466815b0a2","operations":[{"id":"f0d7f6e4-c228-4cba-b860-a6f40ed3372e","table":"block","path":[],"command":"update","args":{"type":"toggle"}}]}]}'
     headers:
       Accept-Encoding:
       - gzip,deflate,identity
@@ -25,7 +25,7 @@ http_interactions:
       Content-Type:
       - application/json
       Content-Length:
-      - '442'
+      - '440'
       Connection:
       - keep-alive
       Keep-Alive:
@@ -36,7 +36,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Fri, 27 Dec 2019 16:01:09 GMT
+      - Fri, 27 Dec 2019 16:03:17 GMT
       Content-Type:
       - application/json; charset=utf-8
       Content-Length:
@@ -44,8 +44,8 @@ http_interactions:
       Connection:
       - keep-alive
       Set-Cookie:
-      - __cfduid=d6ceb2b0de0b9ba8d5597fb4d963f4de71577462468; expires=Sun, 26-Jan-20
-        16:01:08 GMT; path=/; domain=.notion.so; HttpOnly; SameSite=Lax
+      - __cfduid=d3f449c67106e95427ee474c6977a526f1577462596; expires=Sun, 26-Jan-20
+        16:03:16 GMT; path=/; domain=.notion.so; HttpOnly; SameSite=Lax
       X-Dns-Prefetch-Control:
       - 'off'
       X-Frame-Options:
@@ -121,10 +121,10 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 54bc82eec8eaf7e6-EZE
+      - 54bc860f3dd4d2b8-EZE
     body:
       encoding: UTF-8
       string: "{}"
     http_version:
-  recorded_at: Fri, 27 Dec 2019 16:01:08 GMT
+  recorded_at: Fri, 27 Dec 2019 16:03:17 GMT
 recorded_with: VCR 5.0.0

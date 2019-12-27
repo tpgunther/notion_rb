@@ -5,8 +5,8 @@ http_interactions:
     uri: https://www.notion.so/api/v3/submitTransaction
     body:
       encoding: UTF-8
-      string: '{"requestId":"cc4afd03-b139-42e6-a41a-ebe07e5b2f3d","transactions":[{"id":"a3400f44-56fe-477b-b0a0-464942196989","operations":[{"id":"b4902cb0-62da-42cc-bb1a-1e6c57c62feb","table":"block","path":["properties","title"],"command":"set","args":[["A
-        new title 2"]]}]}]}'
+      string: '{"requestId":"b1e54eb2-526a-44b9-aeae-6449f4d0761e","transactions":[{"id":"fa3bf220-0bd1-41ae-919b-9cbf2134c36f","operations":[{"id":"b4902cb0-62da-42cc-bb1a-1e6c57c62feb","table":"block","path":["properties","title"],"command":"set","args":[["A
+        new title 2"]]}]},{"id":"b2d3864f-effa-4a91-bc2a-5bb8e7c583e1","operations":[{"id":"b4902cb0-62da-42cc-bb1a-1e6c57c62feb","table":"block","path":[],"command":"update","args":{"type":"toggle"}}]}]}'
     headers:
       Accept-Encoding:
       - gzip,deflate,identity
@@ -25,7 +25,7 @@ http_interactions:
       Content-Type:
       - application/json
       Content-Length:
-      - '265'
+      - '442'
       Connection:
       - keep-alive
       Keep-Alive:
@@ -36,7 +36,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Thu, 19 Dec 2019 16:05:33 GMT
+      - Fri, 27 Dec 2019 16:01:08 GMT
       Content-Type:
       - application/json; charset=utf-8
       Content-Length:
@@ -44,8 +44,8 @@ http_interactions:
       Connection:
       - keep-alive
       Set-Cookie:
-      - __cfduid=db7deb3aab32e3ebe773e883d0a9680ad1576771532; expires=Sat, 18-Jan-20
-        16:05:32 GMT; path=/; domain=.notion.so; HttpOnly; SameSite=Lax
+      - __cfduid=d74f59acb41e5a34125bade32168b1f061577462468; expires=Sun, 26-Jan-20
+        16:01:08 GMT; path=/; domain=.notion.so; HttpOnly; SameSite=Lax
       X-Dns-Prefetch-Control:
       - 'off'
       X-Frame-Options:
@@ -121,10 +121,10 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 547a9e5eb977cfaf-SCL
+      - 54bc82ec0aa3d2d4-EZE
     body:
       encoding: UTF-8
       string: "{}"
     http_version:
-  recorded_at: Thu, 19 Dec 2019 16:05:33 GMT
+  recorded_at: Fri, 27 Dec 2019 16:01:08 GMT
 recorded_with: VCR 5.0.0

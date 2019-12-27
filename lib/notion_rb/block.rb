@@ -1,11 +1,14 @@
+# frozen_string_literal: true
+
 module NotionRb
   class Block
-    include NotionRb::UuidValidator
+    include NotionRb::Utils::UuidValidator
+    include NotionRb::Utils::BlockTypes
 
     attr_accessor :uuid
 
     def initialize(url_or_uuid)
-      @block_container = BlockCache.instance
+      @block_container = NotionRb::Utils::BlockCache.instance
       @uuid = parse_uuid url_or_uuid
       get_resource
     end
@@ -16,6 +19,17 @@ module NotionRb
 
     def title=(title)
       @block[:title] = title
+      save
+    end
+
+    def type
+      @block[:block_type]
+    end
+
+    def type=(type)
+      return unless valid_block_type?(type)
+
+      @block[:block_type] = type
       save
     end
 
@@ -52,7 +66,7 @@ module NotionRb
 
     def post_resource
       # TODO: detect changes if any before post
-      NotionRb::Api::Update.new(notion_id: @uuid, title: @block[:title]).success?
+      NotionRb::Api::Update.new(notion_id: @uuid, title: @block[:title], block_type: @block[:block_type]).success?
     end
   end
 end

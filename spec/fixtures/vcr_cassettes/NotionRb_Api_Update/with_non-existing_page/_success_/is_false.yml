@@ -5,8 +5,8 @@ http_interactions:
     uri: https://www.notion.so/api/v3/submitTransaction
     body:
       encoding: UTF-8
-      string: '{"requestId":"6424e1e1-b08f-4be0-be5b-acbc020321b3","transactions":[{"id":"ac5bffa9-7199-4688-a892-9a76497a08f9","operations":[{"id":"404-page","table":"block","path":["properties","title"],"command":"set","args":[["A
-        new title 2"]]}]}]}'
+      string: '{"requestId":"9ef53fe9-03cd-43fc-979b-c6670d2ac0a2","transactions":[{"id":"df927300-89f9-4f48-baf1-a34dd2876b06","operations":[{"id":"404-page","table":"block","path":["properties","title"],"command":"set","args":[["A
+        new title 2"]]}]},{"id":"c8639c9e-1481-4a87-abda-a1932f9afb63","operations":[{"id":"404-page","table":"block","path":[],"command":"update","args":{"type":null}}]}]}'
     headers:
       Accept-Encoding:
       - gzip,deflate,identity
@@ -25,7 +25,7 @@ http_interactions:
       Content-Type:
       - application/json
       Content-Length:
-      - '237'
+      - '382'
       Connection:
       - keep-alive
       Keep-Alive:
@@ -36,7 +36,7 @@ http_interactions:
       message: Bad Request
     headers:
       Date:
-      - Thu, 19 Dec 2019 16:05:34 GMT
+      - Fri, 27 Dec 2019 16:01:09 GMT
       Content-Type:
       - application/json; charset=utf-8
       Content-Length:
@@ -44,8 +44,8 @@ http_interactions:
       Connection:
       - keep-alive
       Set-Cookie:
-      - __cfduid=dc990aeb0f8f1bde8dde6c85387bff0d51576771534; expires=Sat, 18-Jan-20
-        16:05:34 GMT; path=/; domain=.notion.so; HttpOnly; SameSite=Lax
+      - __cfduid=d565988811720c716fc5c6b4fe8b106281577462469; expires=Sun, 26-Jan-20
+        16:01:09 GMT; path=/; domain=.notion.so; HttpOnly; SameSite=Lax
       X-Dns-Prefetch-Control:
       - 'off'
       X-Frame-Options:
@@ -109,7 +109,7 @@ http_interactions:
         https://cdnjs.cloudflare.com https://github.githubassets.com https://platform.twitter.com
         https://ton.twimg.com; frame-src https: http:; media-src https: http:'
       Etag:
-      - W/"6e-FFQja/N5uZwzutgwBQMjVm23Ta0"
+      - W/"6e-7/y+4p5eE8wPBpvinA3ZiNLsuSM"
       Vary:
       - Accept-Encoding
       Cf-Cache-Status:
@@ -119,11 +119,11 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 547a9e678b45cfb3-SCL
+      - 54bc82f1fee4d2d0-EZE
     body:
       encoding: UTF-8
-      string: '{"errorId":"fe5bb061-2c03-466a-9a99-edc091f5219c","name":"ValidationError","message":"Invalid
+      string: '{"errorId":"6d930784-b5bd-411c-bc26-6ce98c556023","name":"ValidationError","message":"Invalid
         record request"}'
     http_version:
-  recorded_at: Thu, 19 Dec 2019 16:05:34 GMT
+  recorded_at: Fri, 27 Dec 2019 16:01:09 GMT
 recorded_with: VCR 5.0.0

@@ -7,6 +7,7 @@ module NotionRb
         super
 
         @title = params[:title]
+        @block_type = params[:block_type]
       end
 
       private
@@ -26,6 +27,15 @@ module NotionRb
               path: %w[properties title],
               command: 'set',
               args: [[@title]]
+            }]
+          }, {
+            id: SecureRandom.uuid,
+            operations: [{
+              id: @notion_id,
+              table: 'block',
+              path: [],
+              command: 'update',
+              args: { type: @block_type }
             }]
           }]
         }
