@@ -48,7 +48,7 @@ FactoryBot.define do
     end
 
     trait :embed do
-      type { 'image' }
+      type { 'embed' }
       properties { { title: [['Embed title']], source: [['https://www.github.com']] } }
     end
 
