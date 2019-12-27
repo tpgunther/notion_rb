@@ -73,6 +73,14 @@ module NotionRb
           page_icon: @value.dig('format', 'page_icon')
         )
       end
+
+      def metadata_image
+        metadata_base.merge(
+          source: @value.dig('properties', 'source', 0, 0),
+          caption: @value.dig('properties', 'caption', 0, 0),
+          format: @value.dig('format')
+        )
+      end
     end
   end
 end

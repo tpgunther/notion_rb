@@ -23,7 +23,7 @@ module NotionRb
         'text' => :base,
         'to_do' => :todo,
         'code' => :code,
-        'image' => :embed,
+        'image' => :image,
         'file' => :embed,
         'drive' => :embed,
         'bookmark' => :bookmark,

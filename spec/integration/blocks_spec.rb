@@ -19,6 +19,7 @@ RSpec.describe 'All Blocks' do
   let(:divider_block) { blocks[16] }
   let(:link_to_page_block) { blocks[17] }
   let(:callout_block) { blocks[18] }
+  let(:image_block) { blocks[19] }
 
   context 'page parser' do
     it 'parses correctly', :vcr do
@@ -171,6 +172,17 @@ RSpec.describe 'All Blocks' do
         expect(callout_block[:position]).to be > link_to_page_block[:position]
         expect(callout_block[:metadata][:page_icon]).to eq '💡'
         expect(callout_block[:metadata][:block_color]).to eq 'red_background'
+      end
+    end
+
+    context 'image parser' do
+      it 'parses correctly', :vcr do
+        expect(image_block[:title]).to eq nil
+        expect(image_block[:block_type]).to eq 'image'
+        expect(image_block[:parent_id]).to eq parent[:notion_id]
+        expect(image_block[:position]).to be > callout_block[:position]
+        expect(image_block[:metadata][:caption]).to eq 'caption'
+        expect(image_block[:metadata][:source]).to match /https/
       end
     end
   end
