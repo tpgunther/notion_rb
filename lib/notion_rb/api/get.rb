@@ -33,7 +33,6 @@ module NotionRb
         {
           chunkNumber: 0,
           cursor: { stack: [] },
-          stack: [],
           limit: 50,
           pageId: @notion_id,
           verticalColumns: false

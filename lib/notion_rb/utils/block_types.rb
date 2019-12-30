@@ -5,7 +5,7 @@ module NotionRb
     module BlockTypes
       TYPE_MAPPER = {
         'collection_view' => :base,
-        'collection_view_page' => :base,
+        'collection_view_page' => :collection_view,
         'column' => :base,
         'column_list' => :base,
         'divider' => :base,

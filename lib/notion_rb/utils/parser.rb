@@ -81,6 +81,13 @@ module NotionRb
           format: @value.dig('format')
         )
       end
+
+      def metadata_collection_view
+        {
+          collection: @value.dig('collection_id'),
+          view_ids: @value.dig('view_ids')
+        }
+      end
     end
   end
 end
