@@ -41,7 +41,7 @@ module NotionRb
       end
 
       def response
-        @response ||= agent.post(url, params.to_json, 'Content-Type' => 'application/json')
+        @response ||= agent.post("#{API_BASE_URL}#{url}", params.to_json, 'Content-Type' => 'application/json')
       end
 
       def url

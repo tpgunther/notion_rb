@@ -8,6 +8,7 @@ require 'notion_rb/api/base'
 require 'notion_rb/api/create'
 require 'notion_rb/api/destroy'
 require 'notion_rb/api/get'
+require 'notion_rb/api/query_collection'
 require 'notion_rb/api/restore'
 require 'notion_rb/api/update'
 

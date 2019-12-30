@@ -26,7 +26,7 @@ module NotionRb
       private
 
       def url
-        "#{API_BASE_URL}loadPageChunk"
+        'loadPageChunk'
       end
 
       def params

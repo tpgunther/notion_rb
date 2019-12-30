@@ -13,7 +13,7 @@ module NotionRb
       private
 
       def url
-        "#{API_BASE_URL}submitTransaction"
+        'submitTransaction'
       end
 
       def params
