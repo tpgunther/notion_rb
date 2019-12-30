@@ -250,7 +250,7 @@ RSpec.describe 'All Blocks' do
       expect(table_block[:notion_id]).to eq '0bfbf00d-8e79-42e5-858d-2a60f1e20687'
       expect(table_block[:block_type]).to eq 'collection_view_page'
       expect(table_block[:parent_id]).to eq '393db0d9-1794-4eab-81f4-7b19eaf5ed96'
-      expect(table_block[:metadata][:collection]).to eq '1f564fea-8711-480c-9cb8-9d56ce5beb68'
+      expect(table_block[:metadata][:collection_id]).to eq '1f564fea-8711-480c-9cb8-9d56ce5beb68'
       expect(table_block[:metadata][:view_ids]).to eq ['e9c7a91e-b4dd-4eb4-9418-0957c2d1444b']
     end
   end

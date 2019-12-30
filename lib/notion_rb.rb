@@ -13,7 +13,7 @@ require 'notion_rb/api/restore'
 require 'notion_rb/api/update'
 
 require 'notion_rb/utils/block_cache'
-require 'notion_rb/utils/block_types'
+require 'notion_rb/utils/types'
 require 'notion_rb/utils/converter'
 require 'notion_rb/utils/parser'
 require 'notion_rb/utils/uuid_validator'

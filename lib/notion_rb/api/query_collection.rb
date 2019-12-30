@@ -10,6 +10,10 @@ module NotionRb
         @collection_view_id = params[:collection_view_id]
       end
 
+      def blocks
+        @blocks ||= call
+      end
+
       def call
         JSON.parse(response.body).dig('result', 'blockIds')
       end

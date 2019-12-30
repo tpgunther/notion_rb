@@ -2,7 +2,7 @@
 
 module NotionRb
   module Utils
-    module BlockTypes
+    module Types
       TYPE_MAPPER = {
         'collection_view' => :base,
         'collection_view_page' => :collection_view,

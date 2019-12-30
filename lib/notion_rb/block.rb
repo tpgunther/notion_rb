@@ -3,7 +3,7 @@
 module NotionRb
   class Block
     include NotionRb::Utils::UuidValidator
-    include NotionRb::Utils::BlockTypes
+    include NotionRb::Utils::Types
 
     attr_accessor :uuid
 
@@ -33,6 +33,10 @@ module NotionRb
       save
     end
 
+    def metadata
+      @block[:metadata]
+    end
+
     def parent
       @parent ||= self.class.new(@block[:parent_id])
     end
@@ -57,11 +61,8 @@ module NotionRb
     private
 
     def get_resource
-      unless @block_container.contains?(@uuid)
-        @block_container.add_blocks(NotionRb::Api::Get.new(notion_id: @uuid).blocks)
-      end
-
       @block = @block_container.find(@uuid)
+      @block_container.add_collection_view_blocks(@block)
     end
 
     def post_resource

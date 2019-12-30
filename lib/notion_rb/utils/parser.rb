@@ -3,7 +3,7 @@
 module NotionRb
   module Utils
     class Parser
-      include NotionRb::Utils::BlockTypes
+      include NotionRb::Utils::Types
 
       def initialize(value, position)
         unless valid_block_type?(value['type'])
@@ -84,7 +84,7 @@ module NotionRb
 
       def metadata_collection_view
         {
-          collection: @value.dig('collection_id'),
+          collection_id: @value.dig('collection_id'),
           view_ids: @value.dig('view_ids')
         }
       end

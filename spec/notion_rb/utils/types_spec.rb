@@ -1,12 +1,12 @@
 # encoding: utf-8
 
 class DummyClass
-  include NotionRb::Utils::BlockTypes
+  include NotionRb::Utils::Types
 end
 
 SingleCov.covered!
 
-RSpec.describe NotionRb::Utils::BlockTypes do
+RSpec.describe NotionRb::Utils::Types do
   let(:subject) { DummyClass.new }
 
   context "#valid_block_type?" do
