@@ -65,10 +65,11 @@ RSpec.describe NotionRb::Block do
       expect(subject.children[0].title).to eq 'Header 1'
       expect(subject.children[-3].children[0].title).to eq 'Child 1'
     end
+  end
 
-    context 'with a collection' do
-      let(:subject) { NotionRb::Block.new('0bfbf00d8e7942e5858d2a60f1e20687') }
-
+  context 'collection_view' do
+    let(:subject) { NotionRb::Block.new('0bfbf00d8e7942e5858d2a60f1e20687') }
+    context '#children' do
       it 'gets all children', :vcr do
         expect(subject.children.count).to eq 3
       end
@@ -77,9 +78,17 @@ RSpec.describe NotionRb::Block do
         expect(subject.children.first.title).to eq 'A new name'
       end
     end
+
+    context 'schema' do
+      it 'get schema', :vcr do
+        schema = subject.instance_variable_get(:@block)[:schema]
+        expect(schema[schema.keys.last]['name']).to eq 'Name'
+        expect(schema[schema.keys.last]['type']).to eq 'title'
+      end
+    end
   end
 
-  context 'create and destroy' do
+  context 'destroy and restore' do
     before do
       @subject = NotionRb::Block.new('13f5a83a5a6f4625a87644cae16b9648')
     end

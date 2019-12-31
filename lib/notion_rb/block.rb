@@ -62,22 +62,12 @@ module NotionRb
 
     def get_resource
       @block = @block_container.find(@uuid)
-      add_collection_view_blocks
+      @block_container.add_collection_view_blocks(@block)
     end
 
     def post_resource
       # TODO: detect changes if any before post
       NotionRb::Api::Update.new(notion_id: @uuid, title: @block[:title], block_type: @block[:block_type]).success?
-    end
-
-    def add_collection_view_blocks
-      return unless @block[:block_type] == 'collection_view_page'
-
-      blocks_ids = NotionRb::Api::QueryCollection.new(collection_id: metadata[:collection_id], view_id: metadata[:view_ids][0]).blocks
-      @block[:children] = blocks_ids
-      blocks_ids.each do |block_uuid|
-        @block_container.find(block_uuid)
-      end
     end
   end
 end
