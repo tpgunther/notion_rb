@@ -4,7 +4,7 @@ SingleCov.covered!
 
 RSpec.describe NotionRb::Api::QueryCollection do
   context 'with existing page' do
-    let(:subject) { NotionRb::Api::QueryCollection.new(collection_id: '1f564fea-8711-480c-9cb8-9d56ce5beb68', collection_view_id: 'e9c7a91e-b4dd-4eb4-9418-0957c2d1444b') }
+    let(:subject) { NotionRb::Api::QueryCollection.new(collection_id: '1f564fea-8711-480c-9cb8-9d56ce5beb68', view_id: 'e9c7a91e-b4dd-4eb4-9418-0957c2d1444b') }
 
     context '#success?' do
       it 'is true', :vcr do

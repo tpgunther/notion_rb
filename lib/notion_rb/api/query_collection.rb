@@ -7,7 +7,7 @@ module NotionRb
         super
 
         @collection_id = params[:collection_id]
-        @collection_view_id = params[:collection_view_id]
+        @view_id = params[:view_id]
       end
 
       def blocks
@@ -27,7 +27,7 @@ module NotionRb
       def params
         {
           collectionId: @collection_id,
-          collectionViewId: @collection_view_id,
+          collectionViewId: @view_id,
           query: { agregrate: [{}], filter: [], sort: [], filter_operation: 'and' },
           loader: { type: 'table', limit: 70, userTimeZone: 'America/Santiago', userLocale: 'en', loadContentCover: true }
         }
