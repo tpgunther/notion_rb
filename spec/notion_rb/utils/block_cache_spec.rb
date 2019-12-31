@@ -4,69 +4,67 @@ SingleCov.covered!
 
 RSpec.describe NotionRb::Utils::BlockCache do
   let(:subject) { NotionRb::Utils::BlockCache.instance }
-  let!(:block) { FactoryBot.json(:block, :text) }
+  let!(:block_uuid) { '30e906ba-82c0-4a21-91fb-5bc21f65b3ef' }
 
   it 'is singleton' do
     expect(subject).to eq NotionRb::Utils::BlockCache.instance
   end
 
-  context 'with blocks' do
-    before do
-      subject.add_blocks([block])
-      subject.add_blocks([FactoryBot.json(:block, :text)])
+  context '#contains' do
+    context 'empty' do
+      it 'is false', :vcr do
+        expect(subject.contains?(block_uuid)).to eq false
+      end
     end
 
-    context '#contains?' do
-      it 'returns true' do
-        expect(subject.contains?(block[:notion_id])).to eq true
-      end
-
-      context '#find' do
-        it 'returns block' do
-          expect(subject.find(block[:notion_id])).to eq block
-        end
-      end
-
-      context '#clear' do
-        it 'clears blocks' do
-          subject.clear
-          expect(subject.find(block[:notion_id])).to eq nil
-        end
-      end
-
-      context 'add an existing block with new content' do
-        let(:new_block) { block.dup }
-
-        before do
-          new_block[:title] += ' more content'
-          subject.add_blocks([new_block])
-        end
-
-        it 'updates new content to cache' do
-          expect(subject.find(block[:notion_id])[:title]).to eq new_block[:title]
-        end
+    context 'with blocks' do
+      it 'is true', :vcr do
+        subject.send(:add_block, block_uuid)
+        expect(subject.contains?(block_uuid)).to eq true
       end
     end
   end
 
-  context 'without block' do
-    context '#contains?' do
-      it 'returns false' do
-        expect(subject.contains?(block[:notion_id])).to eq false
+  context '#find' do
+    context 'existing block' do
+      it 'gets blocks', :vcr do
+        expect(subject.find(block_uuid)[:notion_id]).to eq block_uuid
       end
+    end
 
-      context '#find' do
-        it 'returns nil' do
-          expect(subject.find(block[:notion_id])).to eq nil
-        end
+    context 'non-existing block' do
+      it 'returns nil', :vcr do
+        expect(subject.find('non-existing-block')).to eq nil
       end
+    end
+  end
 
-      context '#clear' do
-        it 'clears blocks' do
-          subject.clear
-          expect(subject.find(block[:notion_id])).to eq nil
-        end
+  context '#children' do
+    context 'existing block' do
+      it 'gets children blocks', :vcr do
+        expect(subject.children(block_uuid)).to eq %w[36e0e58b-7459-4dba-88c2-e28100411d7f 4737e75b-76e7-43cf-8bec-cc71892ae7c0]
       end
+    end
+
+    context 'non-existing block' do
+      it 'returns nil', :vcr do
+        expect(subject.children('non-existing-block')).to eq nil
+      end
+    end
+  end
+
+  context '#clear' do
+    it 'clears blocks', :vcr do
+      subject.find(block_uuid)[:notion_id]
+      subject.clear
+      expect(subject.contains?(block_uuid)).to eq false
+    end
+  end
+
+  context '#add_blocks' do
+    it 'gets blocks', :vcr do
+      block = subject.send(:add_block, block_uuid)[0]
+      expect(block[:notion_id]).to eq block_uuid
     end
   end
 end
