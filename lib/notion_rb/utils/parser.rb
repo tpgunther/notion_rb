@@ -88,6 +88,12 @@ module NotionRb
           view_ids: @value.dig('view_ids')
         }
       end
+
+      def metadata_collection
+        {
+          schema: @value.dig('schema')
+        }
+      end
     end
   end
 end

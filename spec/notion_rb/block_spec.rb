@@ -69,22 +69,31 @@ RSpec.describe NotionRb::Block do
 
   context 'collection_view' do
     let(:subject) { NotionRb::Block.new('0bfbf00d8e7942e5858d2a60f1e20687') }
+
     context '#children' do
-      it 'gets all children', :vcr do
-        expect(subject.children.count).to eq 3
+      it 'gets collection children', :vcr do
+        expect(subject.children.count).to eq 1
       end
 
-      it 'gets correct first children title', :vcr do
-        expect(subject.children.first.title).to eq 'A new name'
+      it 'gets correct type', :vcr do
+        expect(subject.children.first.type).to eq 'collection'
+      end
+
+      it 'gets correct rows count', :vcr do
+        expect(subject.children.first.children.count).to eq 3
+      end
+
+      it 'gets correct rows name', :vcr do
+        expect(subject.children.first.children.first.title).to eq 'A new name'
       end
     end
+  end
 
-    context 'schema' do
-      it 'get schema', :vcr do
-        schema = subject.instance_variable_get(:@block)[:schema]
-        expect(schema[schema.keys.last]['name']).to eq 'Name'
-        expect(schema[schema.keys.last]['type']).to eq 'title'
-      end
+  context '#metadata' do
+    let(:subject) { NotionRb::Block.new('30e906ba82c04a2191fb5bc21f65b3ef') }
+
+    it 'bla', :vcr do
+      subject.metadata
     end
   end
 

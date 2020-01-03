@@ -19,8 +19,11 @@ module NotionRb
 
       def call
         body = JSON.parse(response.body)
-        @data = body.dig('recordMap', 'block')
-        convert_values(@notion_id)
+        @collection_rows = body.dig('result', 'blockIds')
+        data = body.dig('recordMap', 'block').merge(body.dig('recordMap', 'collection') || {})
+        data.values.each do |value|
+          convert_values(value.dig('value'))
+        end
       end
 
       private
@@ -39,18 +42,16 @@ module NotionRb
         }
       end
 
-      def convert_values(notion_id)
-        return unless @data.key?(notion_id)
-
-        value = @data[notion_id]['value']
+      def convert_values(value)
+        add_collection_data(value)
         @blocks << @converter.convert(value)
-        parse_children(value.dig('content') || [])
       end
 
-      def parse_children(children)
-        children.each do |child_id|
-          convert_values(child_id)
-        end
+      def add_collection_data(value)
+        return unless value.key? 'schema'
+
+        value['content'] = @collection_rows if @collection_rows
+        value['type'] = 'collection'
       end
     end
   end

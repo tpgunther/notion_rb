@@ -6,25 +6,25 @@ RSpec.describe 'All Blocks' do
   let(:blocks) { NotionRb::Api::Get.new(notion_id: 'f0d7f6e4-c228-4cba-b860-a6f40ed3372e').blocks }
 
   let(:parent) { blocks[0] }
-  (1..3).each do |index|
-    let("header_#{index}_block".to_sym) { blocks[index] }
-    let("bullet_#{index}_block".to_sym) { blocks[index + 3] }
-    let("todo_#{index}_block".to_sym) { blocks[index + 6] }
-    let("numbered_#{index}_block".to_sym) { blocks[index + 9] }
+  (2..4).each do |index|
+    let("header_#{index - 1}_block".to_sym) { blocks[index] }
+    let("bullet_#{index - 1}_block".to_sym) { blocks[index + 3] }
+    let("todo_#{index - 1}_block".to_sym) { blocks[index + 6] }
+    let("numbered_#{index- 1}_block".to_sym) { blocks[index + 9] }
   end
-  let(:text_block) { blocks[13] }
-  let(:toggle_block) { blocks[14] }
-  let(:toggle_child_block) { blocks[15] }
-  let(:quote_block) { blocks[15] }
-  let(:divider_block) { blocks[16] }
-  let(:link_to_page_block) { blocks[17] }
-  let(:callout_block) { blocks[18] }
-  let(:image_block) { blocks[19] }
-  let(:bookmark_block) { blocks[20] }
-  let(:code_block) { blocks[21] }
-  let(:file_block) { blocks[22] }
-  let(:audio_block) { blocks[23] }
-  let(:embed_block) { blocks[24] }
+  let(:text_block) { blocks[14] }
+  let(:toggle_block) { blocks[15] }
+  let(:toggle_child_block) { blocks[16] }
+  let(:quote_block) { blocks[16] }
+  let(:divider_block) { blocks[17] }
+  let(:link_to_page_block) { blocks[18] }
+  let(:callout_block) { blocks[20] }
+  let(:image_block) { blocks[21] }
+  let(:bookmark_block) { blocks[22] }
+  let(:code_block) { blocks[23] }
+  let(:file_block) { blocks[24] }
+  let(:audio_block) { blocks[25] }
+  let(:embed_block) { blocks[26] }
 
   context 'page parser' do
     it 'parses correctly', :vcr do

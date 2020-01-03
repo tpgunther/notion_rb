@@ -4,7 +4,7 @@ module NotionRb
   module Utils
     module Types
       TYPE_MAPPER = {
-        'collection_view' => :base,
+        'collection' => :collection,
         'collection_view_page' => :collection_view,
         'column' => :base,
         'column_list' => :base,

@@ -11,28 +11,6 @@ module NotionRb
         @schema = nil
       end
 
-      def schema
-        return @schema if @schema
-
-        call
-        @schema
-      end
-
-      def rows
-        return @rows if @rows
-
-        call
-        @rows
-      end
-
-      def call
-        body = JSON.parse(response.body)
-        @data = body.dig('recordMap', 'block')
-        @schema = body.dig('recordMap', 'collection', @collection_id, 'value', 'schema')
-        @rows = body.dig('result', 'blockIds')
-        parse_children(@rows)
-      end
-
       private
 
       def url

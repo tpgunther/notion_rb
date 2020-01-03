@@ -14,7 +14,7 @@ RSpec.describe NotionRb::Api::QueryCollection do
 
     context '#call' do
       it 'does not raise', :vcr do
-        expect(subject.call).to eq %w[30e906ba-82c0-4a21-91fb-5bc21f65b3ef b1c6522e-ebd7-484c-a985-aebf55f68723 9a339811-1a14-4dc3-b1d3-d18d1ab7b110]
+        expect { subject.call }.not_to raise_error
       end
     end
   end

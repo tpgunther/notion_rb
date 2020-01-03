@@ -36,8 +36,7 @@ module NotionRb
 
         metadata = block[:metadata]
         query_collection = NotionRb::Api::QueryCollection.new(collection_id: metadata[:collection_id], view_id: metadata[:view_ids][0])
-        block[:schema] = query_collection.schema
-        block[:children] = query_collection.rows
+        block[:children] = [metadata[:collection_id]]
         add_blocks(query_collection.blocks)
       end
 
