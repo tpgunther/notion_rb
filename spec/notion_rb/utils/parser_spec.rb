@@ -35,7 +35,8 @@ RSpec.describe NotionRb::Utils::Parser do
           title: value['properties']['title'][0][0],
           metadata: {
             color: 'black',
-            block_color: 'white'
+            block_color: 'white',
+            properties: { 'title' => [['Test title']] }
           }
         )
       end
@@ -54,7 +55,8 @@ RSpec.describe NotionRb::Utils::Parser do
           title: value['properties']['title'][0][0],
           metadata: {
             color: 'black',
-            block_color: 'white'
+            block_color: 'white',
+            properties: { 'title' => [['Test title']] }
           }
         )
       end
@@ -75,6 +77,7 @@ RSpec.describe NotionRb::Utils::Parser do
         metadata: {
           color: 'black',
           block_color: 'white',
+          properties: { 'checked' => [['Yes']], 'title' => [['Todo title']] },
           checked: true
         }
       )
@@ -95,6 +98,7 @@ RSpec.describe NotionRb::Utils::Parser do
         metadata: {
           color: 'black',
           block_color: 'white',
+          properties: { 'language' => [['ruby']], 'title' => [['Code']] },
           language: value['properties']['language'][0][0]
         }
       )
@@ -115,6 +119,7 @@ RSpec.describe NotionRb::Utils::Parser do
         metadata: {
           color: 'black',
           block_color: 'white',
+          properties: { 'source' => [['https://www.github.com']], 'title' => [['Embed title']] },
           source: value['properties']['source'][0][0]
         }
       )
@@ -135,6 +140,7 @@ RSpec.describe NotionRb::Utils::Parser do
         metadata: {
           color: 'black',
           block_color: 'white',
+          properties: { 'link' => [['https://www.github.com']], 'title' => [['Bookmark title']] },
           source: value['properties']['link'][0][0]
         }
       )
@@ -155,6 +161,7 @@ RSpec.describe NotionRb::Utils::Parser do
         metadata: {
           color: 'black',
           block_color: 'white',
+          properties: { 'title' => [['Test title']] },
           page_icon: value.dig('format', 'page_icon')
         }
       )

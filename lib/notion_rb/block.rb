@@ -34,7 +34,8 @@ module NotionRb
     end
 
     def metadata
-      @block[:metadata]
+      metadata = @block[:metadata].except(:properties)
+      add_parent_metadata(metadata)
     end
 
     def parent
@@ -42,7 +43,11 @@ module NotionRb
     end
 
     def children
-      @children ||= @block_container.children(@uuid).map { |child_uuid| self.class.new(child_uuid) }
+      if type == 'collection_view_page'
+        @children ||= [self.class.new(metadata[:collection_id])]
+      else
+        @children ||= @block_container.children(@uuid).map { |child_uuid| self.class.new(child_uuid) }
+      end
     end
 
     def save
@@ -68,6 +73,17 @@ module NotionRb
     def post_resource
       # TODO: detect changes if any before post
       NotionRb::Api::Update.new(notion_id: @uuid, title: @block[:title], block_type: @block[:block_type]).success?
+    end
+
+    def add_parent_metadata(metadata)
+      return metadata unless parent.type == 'collection'
+
+      parent_schema = parent.metadata[:schema]
+      @block.dig(:metadata, :properties).each do |key, value|
+        schema = parent_schema[key]
+        metadata.merge!(schema['name'] => value[0][0])
+      end
+      metadata
     end
   end
 end

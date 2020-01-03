@@ -39,6 +39,7 @@ module NotionRb
 
       def metadata_base
         {
+          properties: (@value.dig('properties') || {}),
           color: (@value.dig('properties', 'title', 0, 1, 0, 1) || 'black'),
           block_color: (@value.dig('format', 'block_color') || 'white')
         }

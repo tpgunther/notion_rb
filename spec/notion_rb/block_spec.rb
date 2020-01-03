@@ -92,8 +92,12 @@ RSpec.describe NotionRb::Block do
   context '#metadata' do
     let(:subject) { NotionRb::Block.new('30e906ba82c04a2191fb5bc21f65b3ef') }
 
-    it 'bla', :vcr do
-      subject.metadata
+    it 'gets parents name properties', :vcr do
+      expect(subject.metadata.key?('Tags')).to eq true
+    end
+
+    it 'gets properties', :vcr do
+      expect(subject.metadata['Tags']).to eq 'new tag'
     end
   end
 
