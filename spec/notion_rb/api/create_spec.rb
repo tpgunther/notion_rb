@@ -12,6 +12,12 @@ RSpec.describe NotionRb::Api::Create do
       end
     end
 
+    context '#block_uuid' do
+      it 'is correct', :vcr do
+        expect(subject.block_uuid.class).to eq String
+      end
+    end
+
     context '#call' do
       it 'does not raise', :vcr do
         expect { subject.call }.not_to raise_error

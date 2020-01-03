@@ -11,6 +11,10 @@ module NotionRb
         @created_at = (Time.now.to_i / 100) * 100_000
       end
 
+      def block_uuid
+        success? && @notion_id
+      end
+
       private
 
       def url

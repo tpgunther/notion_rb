@@ -50,6 +50,14 @@ module NotionRb
       end
     end
 
+    def create_child
+      creator = NotionRb::Api::Create.new(parent_id: @uuid)
+      return nil unless creator.success?
+
+      @block[:children] << creator.block_uuid
+      self.class.new(creator.block_uuid)
+    end
+
     def save
       # TODO: add validations if needed
       post_resource

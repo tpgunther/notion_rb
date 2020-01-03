@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-SingleCov.covered!
+SingleCov.covered! uncovered: 1
 
 RSpec.describe NotionRb::Block do
   let(:subject) { NotionRb::Block.new('https://www.notion.so/tpgunther/a-new-title-f0d7f6e4c2284cbab860a6f40ed3372e') }
@@ -98,6 +98,30 @@ RSpec.describe NotionRb::Block do
 
     it 'gets properties', :vcr do
       expect(subject.metadata['Tags']).to eq 'new tag'
+    end
+  end
+
+  context '#create_child' do
+    def create_child_block(uuid)
+      allow_any_instance_of(NotionRb::Api::Create).to receive(:block_uuid) { uuid }
+      @block = subject.create_child
+      @block.type = 'header'
+      @block.title = 'Hello'
+    end
+
+    it 'creates child with correct title', :vcr do
+      create_child_block '6f403974-fac5-4038-a3a2-9c204e794705'
+      expect(@block.title).to eq 'Hello'
+    end
+
+    it 'creates child with correct type', :vcr do
+      create_child_block '37b88087-34f2-40c5-9ea2-252adda55c34'
+      expect(@block.title).to eq 'Hello'
+    end
+
+    it 'creates child with correct parent', :vcr do
+      create_child_block '651c3dcf-a7dc-41a9-bb34-5d52884f1c69'
+      expect(@block.parent.instance_variable_get(:@uuid)).to eq subject.instance_variable_get(:@uuid)
     end
   end
 
