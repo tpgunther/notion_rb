@@ -12,7 +12,7 @@ Gem::Specification.new do |spec|
 
   spec.summary       = 'Unoficial integration with Notion'
   spec.description   = ''
-  spec.homepage      = 'https://www.github.com/tpgunther/notion-rb'
+  spec.homepage      = 'https://www.github.com/tpgunther/notion_rb'
   spec.license       = 'MIT'
 
   spec.metadata['homepage_uri'] = spec.homepage
