@@ -34,8 +34,7 @@ module NotionRb
     end
 
     def metadata
-      metadata = @block[:metadata].except(:properties)
-      add_parent_metadata(metadata)
+      @block[:metadata].except(:properties)
     end
 
     def parent
@@ -83,15 +82,32 @@ module NotionRb
       NotionRb::Api::Update.new(notion_id: @uuid, title: @block[:title], block_type: @block[:block_type]).success?
     end
 
-    def add_parent_metadata(metadata)
-      return metadata unless parent.type == 'collection'
+    def method_missing(method, *args, &block)
+      if schema_methods.include?(method)
+        send_schema_method(method)
+      else
+        super
+      end
+    end
 
+    def respond_to_missing?(method_name, *args)
+      schema_methods.include?(method_name) || super
+    end
+
+    def schema_methods
+      return [] unless parent.type == 'collection'
+
+      parent.metadata[:schema].values.map { |value| value['name'].tableize.to_sym }
+    end
+
+    def send_schema_method(method)
       parent_schema = parent.metadata[:schema]
       @block.dig(:metadata, :properties).each do |key, value|
         schema = parent_schema[key]
-        metadata.merge!(schema['name'].downcase.to_sym => value[0][0])
+        next unless schema['name'].tableize.to_sym == method
+
+        return value[0][0]
       end
-      metadata
     end
   end
 end

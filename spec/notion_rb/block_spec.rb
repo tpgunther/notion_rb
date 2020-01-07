@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-SingleCov.covered! uncovered: 1
+SingleCov.covered! uncovered: 4
 
 RSpec.describe NotionRb::Block do
   let(:subject) { NotionRb::Block.new('https://www.notion.so/tpgunther/a-new-title-f0d7f6e4c2284cbab860a6f40ed3372e') }
@@ -92,12 +92,20 @@ RSpec.describe NotionRb::Block do
   context '#metadata' do
     let(:subject) { NotionRb::Block.new('30e906ba82c04a2191fb5bc21f65b3ef') }
 
-    it 'gets parents name properties', :vcr do
-      expect(subject.metadata.key?(:tags)).to eq true
+    context 'existing property' do
+      it 'gets parents name properties', :vcr do
+        expect(subject.respond_to?(:tags)).to eq true
+      end
+
+      it 'gets properties', :vcr do
+        expect(subject.tags).to eq 'new tag'
+      end
     end
 
-    it 'gets properties', :vcr do
-      expect(subject.metadata[:tags]).to eq 'new tag'
+    context 'unexisting property' do
+      it 'gets properties', :vcr do
+        expect { subject.invalid }.to raise_error NoMethodError
+      end
     end
   end
 
