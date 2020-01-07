@@ -89,7 +89,7 @@ module NotionRb
       parent_schema = parent.metadata[:schema]
       @block.dig(:metadata, :properties).each do |key, value|
         schema = parent_schema[key]
-        metadata.merge!(schema['name'] => value[0][0])
+        metadata.merge!(schema['name'].downcase.to_sym => value[0][0])
       end
       metadata
     end
