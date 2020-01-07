@@ -26,7 +26,9 @@ Or install it yourself as:
 
 ```ruby
 # Obtain the `token_v2` value by inspecting your browser cookies on a logged-in session on Notion.so
-ENV['TOKEN_V2'] = '<some token>'
+NotionRb.configure do |config|
+    config[:token_v2] = '<some token>'
+end
 
 # Get the block
 block = NotionRb::Block.new('https://www.notion.so/some_org/some-title-30d7f6e4c2284cbab860a6f40ed3372e')
