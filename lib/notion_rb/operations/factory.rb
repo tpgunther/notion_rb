@@ -2,6 +2,7 @@
 
 require_relative './set_block_type'
 require_relative './set_block_last_edited_time'
+require_relative './set_block_created_time'
 require_relative './list_after'
 module NotionRb
   module Operations
@@ -9,6 +10,7 @@ module NotionRb
       OPERATIONS = Hash[
         [
           ListAfter,
+          SetBlockCreatedTime,
           SetBlockLastEditedTime,
           SetBlockType
         ].map { |klass| [klass::OPERATION_NAME, klass] }
