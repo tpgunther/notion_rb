@@ -24,6 +24,8 @@ require 'notion_rb/transaction'
 require 'notion_rb/operations/commands/factory'
 require 'notion_rb/operations/factory'
 
+require 'notion_rb/request_params'
+
 module NotionRb
   def self.config
     @config ||= {}
