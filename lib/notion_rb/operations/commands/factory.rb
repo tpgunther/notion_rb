@@ -1,10 +1,15 @@
 # frozen_string_literal: true
 
 require_relative './base'
+require_relative './set'
+
 module NotionRb
   module Operations
     module Commands
       COMMANDS = Hash[
+        [
+          Set
+        ].map { |klass| [klass::NAME, klass] }
       ]
 
       class Factory
