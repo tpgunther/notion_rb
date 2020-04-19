@@ -1,14 +1,18 @@
 # frozen_string_literal: true
 
 require_relative './base'
+require_relative './list_after'
 require_relative './set'
+require_relative './update'
 
 module NotionRb
   module Operations
     module Commands
       COMMANDS = Hash[
         [
-          Set
+          ListAfter,
+          Set,
+          Update
         ].map { |klass| [klass::NAME, klass] }
       ]
 
