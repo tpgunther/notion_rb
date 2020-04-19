@@ -2,11 +2,13 @@
 
 require_relative './set_block_type'
 
+require_relative './list_after'
 module NotionRb
   module Operations
     class Factory
       OPERATIONS = Hash[
         [
+          ListAfter,
           SetBlockType
         ].map { |klass| [klass::OPERATION_NAME, klass] }
       ]
