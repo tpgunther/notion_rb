@@ -20,6 +20,7 @@ require 'notion_rb/utils/uuid_validator'
 
 require 'notion_rb/block'
 
+require 'notion_rb/operations/commands/factory'
 module NotionRb
   def self.config
     @config ||= {}
