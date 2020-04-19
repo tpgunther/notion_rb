@@ -5,6 +5,8 @@ require_relative './set_block_last_edited_time'
 require_relative './set_block_created_time'
 require_relative './set_block_title'
 require_relative './list_after'
+require_relative './update_parent'
+
 module NotionRb
   module Operations
     class Factory
@@ -14,7 +16,8 @@ module NotionRb
           SetBlockCreatedTime,
           SetBlockLastEditedTime,
           SetBlockTitle,
-          SetBlockType
+          SetBlockType,
+          UpdateParent
         ].map { |klass| [klass::OPERATION_NAME, klass] }
       ]
 
