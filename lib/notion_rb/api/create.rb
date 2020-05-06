@@ -22,52 +22,15 @@ module NotionRb
       end
 
       def params
-        {
-          requestId: SecureRandom.uuid,
-          transactions: [{
-            id: SecureRandom.uuid,
-            operations: [{
-              id: @notion_id,
-              table: 'block',
-              path: [],
-              command: 'set',
-              args: { type: 'text', id: @notion_id, version: 1 }
-            }, {
-              id: @notion_id,
-              table: 'block',
-              path: [],
-              command: 'update',
-              args: { parent_id: @parent_id, parent_table: 'block', alive: true }
-            }, {
-              id: @parent_id,
-              table: 'block',
-              path: ['content'],
-              command: 'listAfter',
-              args: { id: @notion_id }
-            }, {
-              id: @notion_id,
-              table: 'block',
-              path: %w[
-                properties
-                title
-              ],
-              command: 'set',
-              args: []
-            }, {
-              id: @notion_id,
-              table: 'block',
-              path: ['created_time'],
-              command: 'set',
-              args: @created_at
-            }, {
-              id: @notion_id,
-              table: 'block',
-              path: ['last_edited_time'],
-              command: 'set',
-              args: @created_at
-            }]
-          }]
-        }
+        NotionRb::RequestParams.new.add_transaction.tap do |transaction|
+          transaction
+            .add_operation(:set_block_type, @notion_id, 'block')
+            .add_operation(:update_parent, @notion_id, @parent_id)
+            .add_operation(:list_after, @parent_id, @notion_id)
+            .add_operation(:set_block_title, @notion_id, [])
+            .add_operation(:set_block_created_time, @notion_id, @created_at)
+            .add_operation(:set_block_last_edited_time, @notion_id, @created_at)
+        end.to_h
       end
     end
   end
